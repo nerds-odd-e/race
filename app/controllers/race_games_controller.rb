@@ -62,13 +62,14 @@ class RaceGamesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race_game
-      @race_game = RaceGame.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def race_game_params
-      params.require(:race_game).permit(:distance)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race_game
+    @race_game = RaceGame.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def race_game_params
+    params.require(:race_game).permit(:distance)
+  end
 end

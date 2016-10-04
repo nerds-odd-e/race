@@ -19,141 +19,139 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe RaceGamesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # RaceGame. As you add validations to RaceGame, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # RaceGamesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all race_games as @race_games" do
+  describe 'GET #index' do
+    it 'assigns all race_games as @race_games' do
       race_game = RaceGame.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(assigns(:race_games)).to eq([race_game])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested race_game as @race_game" do
+  describe 'GET #show' do
+    it 'assigns the requested race_game as @race_game' do
       race_game = RaceGame.create! valid_attributes
-      get :show, params: {id: race_game.to_param}, session: valid_session
+      get :show, params: { id: race_game.to_param }, session: valid_session
       expect(assigns(:race_game)).to eq(race_game)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new race_game as @race_game" do
+  describe 'GET #new' do
+    it 'assigns a new race_game as @race_game' do
       get :new, params: {}, session: valid_session
       expect(assigns(:race_game)).to be_a_new(RaceGame)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested race_game as @race_game" do
+  describe 'GET #edit' do
+    it 'assigns the requested race_game as @race_game' do
       race_game = RaceGame.create! valid_attributes
-      get :edit, params: {id: race_game.to_param}, session: valid_session
+      get :edit, params: { id: race_game.to_param }, session: valid_session
       expect(assigns(:race_game)).to eq(race_game)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new RaceGame" do
-        expect {
-          post :create, params: {race_game: valid_attributes}, session: valid_session
-        }.to change(RaceGame, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new RaceGame' do
+        expect do
+          post :create, params: { race_game: valid_attributes }, session: valid_session
+        end.to change(RaceGame, :count).by(1)
       end
 
-      it "assigns a newly created race_game as @race_game" do
-        post :create, params: {race_game: valid_attributes}, session: valid_session
+      it 'assigns a newly created race_game as @race_game' do
+        post :create, params: { race_game: valid_attributes }, session: valid_session
         expect(assigns(:race_game)).to be_a(RaceGame)
         expect(assigns(:race_game)).to be_persisted
       end
 
-      it "redirects to the created race_game" do
-        post :create, params: {race_game: valid_attributes}, session: valid_session
+      it 'redirects to the created race_game' do
+        post :create, params: { race_game: valid_attributes }, session: valid_session
         expect(response).to redirect_to(RaceGame.last)
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved race_game as @race_game" do
-        post :create, params: {race_game: invalid_attributes}, session: valid_session
+    context 'with invalid params' do
+      it 'assigns a newly created but unsaved race_game as @race_game' do
+        post :create, params: { race_game: invalid_attributes }, session: valid_session
         expect(assigns(:race_game)).to be_a_new(RaceGame)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {race_game: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
+        post :create, params: { race_game: invalid_attributes }, session: valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested race_game" do
-        race_game = RaceGame.create! valid_attributes
-        put :update, params: {id: race_game.to_param, race_game: new_attributes}, session: valid_session
-        race_game.reload
-        skip("Add assertions for updated state")
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested race_game as @race_game" do
+      it 'updates the requested race_game' do
         race_game = RaceGame.create! valid_attributes
-        put :update, params: {id: race_game.to_param, race_game: valid_attributes}, session: valid_session
+        put :update, params: { id: race_game.to_param, race_game: new_attributes }, session: valid_session
+        race_game.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested race_game as @race_game' do
+        race_game = RaceGame.create! valid_attributes
+        put :update, params: { id: race_game.to_param, race_game: valid_attributes }, session: valid_session
         expect(assigns(:race_game)).to eq(race_game)
       end
 
-      it "redirects to the race_game" do
+      it 'redirects to the race_game' do
         race_game = RaceGame.create! valid_attributes
-        put :update, params: {id: race_game.to_param, race_game: valid_attributes}, session: valid_session
+        put :update, params: { id: race_game.to_param, race_game: valid_attributes }, session: valid_session
         expect(response).to redirect_to(race_game)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the race_game as @race_game" do
+    context 'with invalid params' do
+      it 'assigns the race_game as @race_game' do
         race_game = RaceGame.create! valid_attributes
-        put :update, params: {id: race_game.to_param, race_game: invalid_attributes}, session: valid_session
+        put :update, params: { id: race_game.to_param, race_game: invalid_attributes }, session: valid_session
         expect(assigns(:race_game)).to eq(race_game)
       end
 
       it "re-renders the 'edit' template" do
         race_game = RaceGame.create! valid_attributes
-        put :update, params: {id: race_game.to_param, race_game: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
+        put :update, params: { id: race_game.to_param, race_game: invalid_attributes }, session: valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested race_game" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested race_game' do
       race_game = RaceGame.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: race_game.to_param}, session: valid_session
-      }.to change(RaceGame, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: race_game.to_param }, session: valid_session
+      end.to change(RaceGame, :count).by(-1)
     end
 
-    it "redirects to the race_games list" do
+    it 'redirects to the race_games list' do
       race_game = RaceGame.create! valid_attributes
-      delete :destroy, params: {id: race_game.to_param}, session: valid_session
+      delete :destroy, params: { id: race_game.to_param }, session: valid_session
       expect(response).to redirect_to(race_games_url)
     end
   end
-
 end

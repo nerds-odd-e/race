@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "RaceGames", type: :request do
-  describe "GET /race_games" do
-    it "works! (now write some real specs)" do
+RSpec.describe 'RaceGames', type: :request do
+  describe 'GET /race_games' do
+    it 'works! (now write some real specs)' do
       get race_games_path
       expect(response).to have_http_status(200)
     end
