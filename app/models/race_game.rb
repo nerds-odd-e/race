@@ -1,0 +1,2 @@
+class RaceGame < ApplicationRecord
+end

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Race Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Distance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @race_games.each do |race_game| %>
+      <tr>
+        <td><%= race_game.distance %></td>
+        <td><%= link_to 'Show', race_game %></td>
+        <td><%= link_to 'Edit', edit_race_game_path(race_game) %></td>
+        <td><%= link_to 'Destroy', race_game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Race Game', new_race_game_path %>
