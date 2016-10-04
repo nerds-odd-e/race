@@ -1,0 +1,11 @@
+= form_for(race_player) do |f|
+  - if race_player.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(race_player.errors.count, "error")
+        prohibited this race_player from being saved:
+      %ul
+        - race_player.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    = f.submit
