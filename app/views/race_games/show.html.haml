@@ -3,3 +3,7 @@
   %strong Distance:
   = @race_game.distance
 %ul
+  - @race_game.race_players.each do |player|
+    %li{id: "car#{player.index}"}
+      %span.index= player.index
+      %span.scars= 0
