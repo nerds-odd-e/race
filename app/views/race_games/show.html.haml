@@ -2,8 +2,10 @@
 %p
   %strong Distance:
   = @race_game.distance
+%button Choose-First
 %ul
   - @race_game.race_players.each do |player|
-    %li{id: "car#{player.index}"}
+    %li.car{id: "car#{player.index}"}
       %span.index= player.index
-      %span.scars= 0
+      %span.steps= player.steps
+      %span.scars= player.scars
