@@ -21,7 +21,7 @@ end
 Given(/^a player's car has existing number of (\d+)$/) do |scars|
   step %(the organizer created a game)
   step %(a player join the game)
-  @player1.update(scars: scars)
+  @player1.update(old_scars: scars)
 end
 
 When(/^the organizer starts a new tick$/) do

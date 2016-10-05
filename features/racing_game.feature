@@ -49,7 +49,7 @@ Feature: Emerson's car racing game
       |      1  | normal  |    2   |  1    |           1      |
 
     Examples: Player chose 'super'
-      | damages | option  | number | steps | expected damages |
+      | damages | choice  | number | steps | expected damages |
       |      0  | super   |    1   |  1    |           1      |
       |      0  | super   |    2   |  2    |           1      |
       |      0  | super   |    3   |  3    |           1      |

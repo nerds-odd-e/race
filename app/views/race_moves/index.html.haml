@@ -1,0 +1,25 @@
+%h1 Listing race_moves
+
+%table
+  %thead
+    %tr
+      %th Race player
+      %th Choice
+      %th Dice face
+      %th
+      %th
+      %th
+
+  %tbody
+    - @race_moves.each do |race_move|
+      %tr
+        %td= race_move.race_player
+        %td= race_move.choice
+        %td= race_move.dice_face
+        %td= link_to 'Show', race_move
+        %td= link_to 'Edit', edit_race_move_path(race_move)
+        %td= link_to 'Destroy', race_move, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Race move', new_race_move_path

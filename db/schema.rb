@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005021916) do
+ActiveRecord::Schema.define(version: 20161005032116) do
 
   create_table "race_games", force: :cascade do |t|
     t.integer  "distance",   default: 20, null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161005021916) do
   create_table "race_players", force: :cascade do |t|
     t.integer  "race_game_id"
     t.integer  "steps",        default: 0, null: false
-    t.integer  "scars",        default: 0, null: false
+    t.integer  "old_scars",    default: 0, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "next_rand"

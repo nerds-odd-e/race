@@ -1,0 +1,2 @@
+module RaceMovesHelper
+end
