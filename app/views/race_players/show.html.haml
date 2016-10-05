@@ -1,4 +1,9 @@
 %p#notice= notice
+%p#alert= alert
+.dice-face
+  -if @race_player.dice_face
+    .face-inner{class: "dice-face#{@race_player.dice_face}"}
+      =@race_player.dice_face
 
 =button_to 'normal', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'normal'}}
 =button_to 'super', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'super'}}

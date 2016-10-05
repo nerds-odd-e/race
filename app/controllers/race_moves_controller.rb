@@ -29,12 +29,13 @@ class RaceMovesController < ApplicationController
 
     respond_to do |format|
       if @race_move.save
-        format.html { redirect_to @race_player, notice: 'Race move was successfully created.' }
+        flash[:notice] = 'You just made the move'
         format.json { render :show, status: :created, location: @race_move }
       else
-        format.html { render :new }
+        flash[:alert] = @race_move.errors.full_messages.join(', ')
         format.json { render json: @race_move.errors, status: :unprocessable_entity }
       end
+      format.html { redirect_to @race_player }
     end
   end
 

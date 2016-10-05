@@ -13,12 +13,21 @@ When(/^another player join the game$/) do
   @player2 = RacePlayer.last
 end
 
+Given(/^a player is in the game \(he\)$/) do
+  step %(the organizer created a game)
+  step %(a player join the game)
+end
+
+Given(/^another player is in the game \(she\)$/) do
+  step('another player join the game')
+end
+
 Then(/^there should be two cars at the beginning line$/) do
   visit race_game_url RaceGame.last
   expect(page).to have_selector('.car', count: 2)
 end
 
-Given(/^a player's car has existing number of (\d+)$/) do |scars|
+Given(/^a player's car has existing number of (\d+) scars$/) do |scars|
   step %(the organizer created a game)
   step %(a player join the game)
   @player1.update(old_scars: scars)
@@ -29,13 +38,40 @@ When(/^the organizer starts a new tick$/) do
   click_button 'Choose-First'
 end
 
+Then(/^he should not be able to move( again)?$/) do |again|
+  visit race_player_url @player1
+  click_button 'normal'
+  if again
+    expect(page).to have_selector('#alert', text: 'Tick already moved')
+  else
+    expect(page).to have_selector('#alert', text: 'Tick has not started')
+  end
+end
+
+def player_makes_a_move(player, choice, number)
+  player.update(next_rand: number)
+  visit race_player_url player
+  click_button choice
+  expect(page).to have_selector(".dice-face .dice-face#{number}", text: number)
+end
+
+
+Then(/^he can make a move( again)?$/) do |again|
+  player_makes_a_move(@player1, 'normal', 1)
+  expect(page).to have_selector('#notice', text: 'You just made the move')
+end
+
+Then(/^she can make a move$/) do
+  player_makes_a_move(@player2, 'normal', 2)
+end
+
 Then(/^he should be asked to choose if he want to go 'normal' or 'super'$/) do
+  visit race_player_url @player1
+  expect(page).to have_selector('.dice-face', text: '')
 end
 
 When(/^he makes a (.*?) and the dice show (\d+)$/) do |choice, number|
-  @player1.update(next_rand: number)
-  visit race_player_url @player1
-  click_button choice
+  player_makes_a_move(@player1, choice, number)
 end
 
 

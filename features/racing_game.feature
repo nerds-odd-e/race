@@ -26,8 +26,19 @@ Feature: Emerson's car racing game
     When another player join the game
     Then there should be two cars at the beginning line
 
+  Scenario: from the player's view
+    Given a player is in the game (he)
+      And another player is in the game (she)
+     Then he should not be able to move
+     When the organizer starts a new tick
+     Then he can make a move
+      And he should not be able to move again
+      And she can make a move
+     When the organizer starts a new tick
+     Then he can make a move again
+
   Scenario Outline: play a tick
-    Given a player's car has existing number of <damages>
+    Given a player's car has existing number of <damages> scars
     When the organizer starts a new tick
     Then he should be asked to choose if he want to go 'normal' or 'super'
     When he makes a <choice> and the dice show <number>

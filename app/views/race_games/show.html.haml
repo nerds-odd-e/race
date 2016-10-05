@@ -2,7 +2,7 @@
 %p
   %strong Distance:
   = @race_game.distance
-%button Choose-First
+=button_to 'Choose-First', choose_first_race_game_path(@race_game)
 %ul
   - @race_game.race_players.each do |player|
     %li.car{id: "car#{player.index}"}

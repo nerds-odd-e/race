@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005032116) do
+ActiveRecord::Schema.define(version: 20161005062223) do
 
   create_table "race_games", force: :cascade do |t|
     t.integer  "distance",   default: 20, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "tick",       default: 0,  null: false
   end
 
   create_table "race_moves", force: :cascade do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161005032116) do
     t.integer  "dice_face"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "tick"
     t.index ["race_player_id"], name: "index_race_moves_on_race_player_id"
   end
 

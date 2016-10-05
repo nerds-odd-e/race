@@ -2,9 +2,27 @@ require 'rails_helper'
 
 RSpec.describe RaceMove, type: :model do
   let(:race_player) { FactoryGirl.create :race_player }
+  subject { race_player.race_moves.new choice: 'normal' }
+
+  context 'before the game start ticking' do
+    before { subject.valid? }
+    it { is_expected.to be_invalid }
+    its("errors.messages") { is_expected.to include({tick: ["has not started yet"]}) }
+  end
+
+  context 'after the game start ticking' do
+    before { race_player.race_game.next_tick! }
+    it { is_expected.to be_valid }
+
+    context 'to move again' do
+      before { race_player.race_moves.create choice: 'normal' }
+      before { subject.valid? }
+      it { is_expected.to be_invalid }
+      its("errors.messages") { is_expected.to include({tick: ["already moved"]}) }
+    end
+  end
 
   context 'a normal move' do
-    subject { race_player.race_moves.new choice: 'normal' }
     its(:choice) {is_expected.to eq 'normal'}
 
     context 'when the rand number is an odd number' do
