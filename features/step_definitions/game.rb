@@ -33,6 +33,9 @@ Then(/^he should be asked to choose if he want to go 'normal' or 'super'$/) do
 end
 
 When(/^he makes a (.*?) and the dice show (\d+)$/) do |choice, number|
+  @player1.update(next_rand: number)
+  visit race_player_url @player1
+  click_button choice
 end
 
 
