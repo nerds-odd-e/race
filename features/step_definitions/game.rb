@@ -52,17 +52,17 @@ def player_makes_a_move(player, choice, number)
   player.update(next_rand: number)
   visit race_player_url player
   click_button choice
-  expect(page).to have_selector(".dice-face .dice-face#{number}", text: number)
+  expect(page).to have_selector(".dice-face .dice-face#{number}", text: number) if number
 end
 
 
 Then(/^he can make a move( again)?$/) do |again|
-  player_makes_a_move(@player1, 'normal', 1)
+  player_makes_a_move(@player1, 'normal', nil)
   expect(page).to have_selector('#notice', text: 'You just made the move')
 end
 
 Then(/^she can make a move$/) do
-  player_makes_a_move(@player2, 'normal', 2)
+  player_makes_a_move(@player2, 'normal', nil)
 end
 
 Then(/^he should be asked to choose if he want to go 'normal' or 'super'$/) do

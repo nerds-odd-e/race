@@ -13,6 +13,12 @@ RSpec.describe RacePlayer, type: :model do
 
   context 'given I set the next rand number to be 3' do
     before { subject.next_rand = 3 }
-    its(:dice_face) { is_expected.to eq 3 }
+    its(:dice_face) { is_expected.to be_nil }
+
+    context 'when makes the next move' do
+      before { subject.race_moves.new }
+      its(:dice_face) { is_expected.to eq 3 }
+    end
   end
+
 end

@@ -67,38 +67,3 @@ Feature: Emerson's car racing game
       |      1  | super   |    1   |  0    |           2      |
       |      1  | super   |    2   |  1    |           2      |
 
-  Scenario: end a game
-    Given player1's car is 3 steps from the final
-    And   player2's car is 3 steps from the final
-    And   the organizer starts a new tick
-    When player1 goes 3 steps
-    And  player2 goes 2 steps
-    Then player1 win
-    And  player2 doesn't win
-    And  this is the end of the game
-
-  Scenario: Organizer starts a choose-first tick
-    Given I've joined the game
-    When the organizer starts a new choose-first tick
-    Then I should be asked to choose if I want go normal or super
-    And I will see the dice play after that
-
-  Scenario: Organizer starts a choose-later tick
-    Given I've joined the game
-    When the organizer starts a new choose-later tick
-    Then I will see the dice play first
-    Then I should be asked to choose if I want go normal or super
-
-  @now
-  Scenario: Join a game
-    Given the organizer create a game
-    When I join the game by visiting the game url
-    Then I should see my car is number 1 on my screen
-    And I should see a new car with the same number on the organizer's screen
-
-  Scenario: Multiple players
-    Given I've joined the game
-    And another person joined the tame game
-    When the organizer starts a new tick
-    Then I will see two race cars from the organizer's screen
-

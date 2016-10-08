@@ -11,11 +11,15 @@ class RacePlayer < ApplicationRecord
   end
 
   def dice_face
-    next_rand
+    race_moves.last&.dice_face
   end
 
   def steps
     result_of_moves.steps
+  end
+
+  def next_rand
+    self[:next_rand] || 1 + rand(6)
   end
 
   private
