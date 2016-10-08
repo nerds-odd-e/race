@@ -1,9 +1,10 @@
-class RaceMove < ApplicationRecord
+class RaceMove < ApplicationRecord # :nodoc:
   belongs_to :race_player
-  validates_numericality_of :tick, greater_than: 0, message: 'has not started yet'
+  validates_numericality_of(:tick, greater_than: 0,
+                                   message: 'has not started yet')
   validates_uniqueness_of :tick, message: 'already moved'
-  before_validation :get_tick
-  after_initialize :get_dice_face
+  before_validation :fetch_tick
+  after_initialize :fetch_dice_face
 
   def super?
     choice == 'super'
@@ -19,11 +20,11 @@ class RaceMove < ApplicationRecord
 
   private
 
-  def get_tick
+  def fetch_tick
     self.tick = race_player.race_game.tick
   end
 
-  def get_dice_face
+  def fetch_dice_face
     self.dice_face ||= race_player.next_rand
   end
 end

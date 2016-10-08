@@ -1,4 +1,4 @@
-class RaceGamesController < ApplicationController
+class RaceGamesController < ApplicationController # :nodoc:
   before_action :set_race_game, only: [:show, :choose_first]
 
   # GET /race_games
@@ -22,11 +22,11 @@ class RaceGamesController < ApplicationController
 
     respond_to do |format|
       if @race_game.save
-        format.html { redirect_to @race_game, notice: 'Race game was successfully created.' }
-        format.json { render :show, status: :created, location: @race_game }
+        format.html do
+          redirect_to @race_game, notice: 'Race game was successfully created.'
+        end
       else
         format.html { render :new }
-        format.json { render json: @race_game.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,7 +47,6 @@ class RaceGamesController < ApplicationController
     @race_game = RaceGame.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def race_game_params
     params.require(:race_game).permit(:distance)
   end

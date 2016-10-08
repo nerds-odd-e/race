@@ -52,7 +52,7 @@ def player_makes_a_move(player, choice, number)
   player.update(next_rand: number)
   visit race_player_url player
   click_button choice
-  expect(page).to have_selector(".dice-face .dice-face#{number}", text: number) if number
+  expect(page).to have_selector(".dice-face#{number}", text: number) if number
 end
 
 Then(/^he can make a move( again)?$/) do |_again|
@@ -73,7 +73,9 @@ When(/^he makes a (.*?) and the dice show (\d+)$/) do |choice, number|
   player_makes_a_move(@player1, choice, number)
 end
 
-Then(/^the player's car should be at the beginning line with (\d+) damage$/) do |scars|
+Then(
+  /^the player's car should be at the beginning line with (\d+) damage$/
+) do |scars|
   step("his car should go 0 with #{scars} on it")
 end
 

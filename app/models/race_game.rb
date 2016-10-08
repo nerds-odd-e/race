@@ -1,4 +1,4 @@
-class RaceGame < ApplicationRecord
+class RaceGame < ApplicationRecord # :nodoc:
   has_many :race_players
 
   def next_tick!
