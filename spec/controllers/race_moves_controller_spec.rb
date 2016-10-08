@@ -6,7 +6,12 @@ RSpec.describe RaceMovesController, type: :controller do
   let(:valid_attributes) { { choice: 'normal' } }
 
   describe 'POST #create' do
-    subject { post :create, params: { race_player_id: race_player, race_move: valid_attributes } }
+    subject do
+      post :create, params: {
+        race_player_id: race_player,
+        race_move: valid_attributes
+      }
+    end
     context 'with valid params' do
       it 'creates a new RaceMove' do
         expect { subject }.to change(RaceMove, :count).by(1)

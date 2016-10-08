@@ -7,7 +7,9 @@ RSpec.describe RaceMove, type: :model do
   context 'before the game start ticking' do
     before { subject.valid? }
     it { is_expected.to be_invalid }
-    its('errors.messages') { is_expected.to include(tick: ['has not started yet']) }
+    its('errors.messages') do
+      is_expected.to include tick: ['has not started yet']
+    end
   end
 
   context 'after the game start ticking' do
