@@ -83,7 +83,7 @@ RSpec.describe RaceGamesController, type: :controller do
 
   describe 'choose first' do
     let(:race_game) { FactoryGirl.create :race_game }
-    subject { post :choose_first, params: { id: race_game.to_param} }
+    subject { post :choose_first, params: { id: race_game.to_param } }
     context 'with valid params' do
       it 'updates the requested race_game' do
         expect { subject }.to change { race_game.reload.tick }.by(1)

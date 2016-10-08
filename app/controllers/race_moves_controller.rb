@@ -40,13 +40,14 @@ class RaceMovesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race_move
-      @race_move = RaceMove.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def race_move_params
-      params.require(:race_move).permit(:choice)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race_move
+    @race_move = RaceMove.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def race_move_params
+    params.require(:race_move).permit(:choice)
+  end
 end

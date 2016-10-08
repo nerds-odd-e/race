@@ -55,8 +55,7 @@ def player_makes_a_move(player, choice, number)
   expect(page).to have_selector(".dice-face .dice-face#{number}", text: number) if number
 end
 
-
-Then(/^he can make a move( again)?$/) do |again|
+Then(/^he can make a move( again)?$/) do |_again|
   player_makes_a_move(@player1, 'normal', nil)
   expect(page).to have_selector('#notice', text: 'You just made the move')
 end
@@ -73,7 +72,6 @@ end
 When(/^he makes a (.*?) and the dice show (\d+)$/) do |choice, number|
   player_makes_a_move(@player1, choice, number)
 end
-
 
 Then(/^the player's car should be at the beginning line with (\d+) damage$/) do |scars|
   step("his car should go 0 with #{scars} on it")
