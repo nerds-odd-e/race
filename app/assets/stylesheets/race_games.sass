@@ -1,0 +1,18 @@
+ul.cars
+  list-style-type: none
+  margin-left: 0
+
+@for $i from 0 through 6
+  .scar#{$i}::after
+    content: image-url('car-scar#{$i}.png')
+
+.steps
+  display: inline-block
+
+@for $i from 0 through 50
+  .step#{$i}
+    width: #{$i * 30}px
+
+.index
+  color: red
+  font-size: 80px

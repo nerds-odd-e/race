@@ -7,12 +7,12 @@
   %strong Tick:
   = @race_game.tick
 =button_to 'Choose-First', choose_first_race_game_path(@race_game)
-%ul
+%ul.cars
   - @race_game.race_players.each do |player|
     %li.car{id: "car#{player.index}"}
+      %span.steps{class: "step#{[player.steps, 50].min}"}= player.steps
+      %span.scars{class: "scar#{[player.scars, 6].min}"}
       %span.index= player.index
-      %span.steps= player.steps
-      %span.scars= player.scars
 
 %div
   =link_to 'new player', new_race_game_race_player_path(@race_game)
