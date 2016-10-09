@@ -1,10 +1,15 @@
-%p#notice= notice
-
 .top-bar
-  %p#tick
+  .top-bar-block
+    %strong Total Players:
+    = @race_game.race_players.count
+  .top-bar-block#tick
     %strong Tick:
     = @race_game.tick
-  =button_to 'Choose-First', choose_first_race_game_path(@race_game)
+  .top-bar-block
+    %strong Moved:
+    = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
+%p#notice= notice
+
 %ul.cars
   - @race_game.race_players.each do |player|
     %li.car{id: "car#{player.index}"}
@@ -14,5 +19,6 @@
 
 %div
   =link_to 'new player', new_race_game_race_player_path(@race_game)
+  =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 :javascript
-  setTimeout("location.reload();",1000);
+  setTimeout("location.reload();",100000);
