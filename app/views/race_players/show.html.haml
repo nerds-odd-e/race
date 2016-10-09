@@ -1,9 +1,16 @@
-%p#notice= notice
-%p#alert= alert
-.dice-face
-  -if @race_player.dice_face
-    .face-inner{class: "dice-face#{@race_player.dice_face}"}
-      =@race_player.dice_face
+.player-body
+  .message
+    #notice= notice
+    #alert= alert
+  .car{id: "car#{@race_player.index}"}
+    %span.scars{class: "scar#{[@race_player.scars, 6].min}"}
+    %span.index= @race_player.index
+  .dice
+    .dice-face
+      -if @race_player.dice_face
+        .face-inner{class: "dice-face#{@race_player.dice_face}"}
+          .dice-number
+            =@race_player.dice_face
 
-=button_to 'normal', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'normal'}}
-=button_to 'super', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'super'}}
+  =button_to 'normal', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'normal'}}, class: "normal"
+  =button_to 'super', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'super'}}, class: "super"

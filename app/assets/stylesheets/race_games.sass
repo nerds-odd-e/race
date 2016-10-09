@@ -16,3 +16,43 @@ ul.cars
 .index
   color: red
   font-size: 80px
+
+.dice-number
+  display: none
+
+.player-body
+  display:block
+  width: 100%
+  .message
+    display: block
+    width: 100%
+    height: 50px
+  .car
+    text-align: center
+  .button_to
+    text-align: center
+  input[type='submit']
+    background-color: blue
+    width: 60%
+    margin: 5px
+    font-size: 50px
+    color: white
+    padding: 15px
+    border-radius: 16px
+  input[type='submit'][value='super']
+    background-color: red
+  .dice
+    display: block
+    width: 100%
+    .dice-face
+      width: 150px
+      margin-left: auto
+      margin-right: auto
+      border: solid 1px black
+      border-radius: 25px
+      background-color: green
+
+@for $i from 1 through 6
+  .dice-face#{$i}::after
+    content: image-url('dice#{$i}.png')
+
