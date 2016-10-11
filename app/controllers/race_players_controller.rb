@@ -1,20 +1,19 @@
 class RacePlayersController < ApplicationController # :nodoc:
   before_action :set_race_player, only: [:show, :edit, :update, :destroy]
-  before_action :set_race_game, only: [:new]
+  before_action :set_race_game, only: [:new, :create]
 
   # GET /race_players/1
   # GET /race_players/1.json
   def show
   end
 
-  # GET /race_players/new
-  def new
+  def create
     @race_player = RacePlayer.create race_game: @race_game
     redirect_to @race_player
   end
 
-  # GET /race_players/1/edit
-  def edit
+  def new
+    create
   end
 
   private

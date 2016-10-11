@@ -50,6 +50,13 @@ RSpec.describe RaceGamesController, type: :controller do
     end
   end
 
+  describe 'join last game' do
+    it 'assigns a new race_game as @race_game' do
+      get :join_last
+      expect(assigns(:race_game)).to eq(RaceGame.last)
+    end
+  end
+
   describe 'choose first' do
     let(:race_game) { FactoryGirl.create :race_game }
     subject { post :choose_first, params: { id: race_game.to_param } }

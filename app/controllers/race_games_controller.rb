@@ -40,6 +40,10 @@ class RaceGamesController < ApplicationController # :nodoc:
     end
   end
 
+  def join_last
+    @race_game = RaceGame.last
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

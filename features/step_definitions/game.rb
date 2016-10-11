@@ -3,14 +3,18 @@ Given(/^the organizer created a game$/) do
   click_button 'Create'
 end
 
-When(/^a player join the game$/) do
-  visit new_race_game_race_player_url(RaceGame.last)
+def join_last_game
+  visit join_last_race_games_url
+  click_button 'Join'
   @player1 = RacePlayer.last
 end
 
+When(/^a player join the game$/) do
+  @player1 = join_last_game
+end
+
 When(/^another player join the game$/) do
-  visit new_race_game_race_player_url(RaceGame.last)
-  @player2 = RacePlayer.last
+  @player2 = join_last_game
 end
 
 Given(/^a player is in the game \(he\)$/) do
@@ -84,6 +88,6 @@ Then(/^his car should go (\d+) with (\d+) on it$/) do |steps, scars|
   within(:xpath, "//li[@id='car#{@player1.index}']") do
     expect(page).to have_selector('.index', text: @player1.index)
     expect(page).to have_selector('.steps', text: steps)
-    expect(page).to have_selector('.scars', text: scars)
+    expect(page).to have_selector(".scars.scar#{scars}")
   end
 end

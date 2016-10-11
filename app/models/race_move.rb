@@ -2,7 +2,8 @@ class RaceMove < ApplicationRecord # :nodoc:
   belongs_to :race_player
   validates_numericality_of(:tick, greater_than: 0,
                                    message: 'has not started yet')
-  validates_uniqueness_of :tick, scope: :race_player_id, message: 'already moved'
+  validates_uniqueness_of(:tick, scope: :race_player_id,
+                                 message: 'already moved')
   before_validation :fetch_tick
   after_initialize :fetch_dice_face
 
