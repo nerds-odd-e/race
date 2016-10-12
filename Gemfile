@@ -26,8 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails', '~> 0.9'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'rubocop', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -36,7 +35,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'rubocop', require: false
   gem 'rspec-its'
 end
 
