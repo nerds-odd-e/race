@@ -1,8 +1,9 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
+set :rbenv_ruby, '2.3.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'race'
+set :repo_url, 'https://github.com/nerds-odd-e/race.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
