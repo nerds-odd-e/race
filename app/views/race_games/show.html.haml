@@ -11,7 +11,7 @@
 %p#notice= notice
 
 %ul.cars
-  - @race_game.race_players.each do |player|
+  - @race_game.sorted_players.each do |player|
     %li.car{id: "car#{player.index}"}
       %span.steps{class: "step#{[player.steps, 50].min}"}= player.steps
       %span.scars{class: "scar#{[player.scars, 6].min}"}
@@ -21,4 +21,4 @@
   =link_to 'new player', new_race_game_race_player_path(@race_game)
   =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 :javascript
-  setTimeout("location.reload();",100000);
+  setTimeout("location.reload();",1000);
