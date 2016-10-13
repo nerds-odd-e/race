@@ -1,6 +1,15 @@
+.qr-code
+  position: absolute
+  width: 100%
+  text-align: right
+  z-index: -100
+
 ul.cars
   list-style-type: none
+  overflow: auto
   margin-left: 0
+  li
+    white-space: nowrap
 
 @for $i from 0 through 6
   .scar#{$i}::after

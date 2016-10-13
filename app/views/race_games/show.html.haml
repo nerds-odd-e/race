@@ -10,6 +10,8 @@
     = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
 %p#notice= notice
 
+.qr-code
+  =image_tag('qr.png')
 %ul.cars
   - @race_game.sorted_players.each do |player|
     %li.car{id: "car#{player.index}"}
@@ -21,4 +23,4 @@
   =link_to 'new player', new_race_game_race_player_path(@race_game)
   =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 :javascript
-  setTimeout("location.reload();",1000);
+  setTimeout("location.reload();",100000);
