@@ -23,4 +23,8 @@
   =link_to 'new player', new_race_game_race_player_path(@race_game)
   =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 :javascript
-  setTimeout("location.reload();",100000);
+  setTimeout(function() {
+    $.get('', function(data) {
+      $('body').html(data);
+    });
+  },1000);
