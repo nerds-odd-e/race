@@ -4,4 +4,8 @@ class RaceGame < ApplicationRecord # :nodoc:
   def next_tick!
     self.tick += 1
   end
+
+  def sorted_players
+    race_players.sort_by(&:steps).reverse
+  end
 end
