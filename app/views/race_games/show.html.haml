@@ -8,7 +8,10 @@
   .top-bar-block
     %strong Moved:
     = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
-%p#notice= notice
+  .top-bar-block
+    = notice
+  .top-bar-block.pull-right
+    =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 
 .qr-code
   =image_tag('qr.png')
@@ -19,9 +22,6 @@
       %span.scars{class: "scar#{[player.scars, 6].min}"}
       %span.index= player.index
 
-%div
-  =link_to 'new player', new_race_game_race_player_path(@race_game)
-  =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 :javascript
   setTimeout(function() {
     $.get('', function(data) {
