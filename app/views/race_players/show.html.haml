@@ -11,6 +11,9 @@
         .face-inner{class: "dice-face#{@race_player.dice_face}"}
           .dice-number
             =@race_player.dice_face
+        -unless alert
+          #face-gif
+            =image_tag("dice.gif")
   .distance
     %strong Current Distance:
     = @race_player.steps
@@ -22,3 +25,4 @@
 :javascript
   $('#notice').fadeIn().delay(2000).fadeOut();
   $('#alert').fadeIn().delay(2000).fadeOut();
+  $('#face-gif').fadeIn().delay(1000).fadeOut();
