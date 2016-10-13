@@ -35,3 +35,4 @@ set :repo_url, 'https://github.com/nerds-odd-e/race.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+after 'deploy:publishing', 'deploy:restart'
