@@ -1,30 +1,35 @@
-.top-bar
-  .top-bar-block
-    %strong Total Players:
-    = @race_game.race_players.count
-  .top-bar-block#tick
-    %strong Tick:
-    = @race_game.tick
-  .top-bar-block
-    %strong Moved:
-    = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
-  .top-bar-block
-    = notice
-  .top-bar-block.pull-right
+#spectator
+  .top-bar
+    .top-bar-block
+      %strong Total Players:
+      = @race_game.race_players.count
+    .top-bar-block#tick
+      %strong Tick:
+      = @race_game.tick
+    .top-bar-block
+      %strong Moved:
+      = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
+    .top-bar-block
+      = notice
+
+  %ul.cars
+    - @race_game.sorted_players.each do |player|
+      %li.car{id: "car#{player.index}"}
+        %span.steps{class: "step#{[player.steps, 50].min}"}= player.steps
+        %span.scars{class: "scar#{[player.scars, 6].min}"}
+        %span.index= player.index
+
+-unless @inner_only
+  .controls
     =button_to 'Choose-First', choose_first_race_game_path(@race_game)
+  .qr-code
+    =image_tag(qr_code_race_game_path(@race_game, format: 'svg'))
 
-.qr-code
-  =image_tag(qr_code_race_game_path(@race_game, format: 'svg'))
-%ul.cars
-  - @race_game.sorted_players.each do |player|
-    %li.car{id: "car#{player.index}"}
-      %span.steps{class: "step#{[player.steps, 50].min}"}= player.steps
-      %span.scars{class: "scar#{[player.scars, 6].min}"}
-      %span.index= player.index
-
-:javascript
-  setTimeout(function() {
-    $.get('', function(data) {
-      $('body').html(data);
-    });
-  },1000);
+  :javascript
+    var reload = function() {
+      $.get('?inner_only=true', function(data) {
+        $('#spectator').html(data);
+      });
+      setTimeout(reload, 1000);
+    };
+    setTimeout(reload, 1000);
