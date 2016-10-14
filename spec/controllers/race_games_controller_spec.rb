@@ -57,6 +57,15 @@ RSpec.describe RaceGamesController, type: :controller do
     end
   end
 
+  describe 'qr_code' do
+    subject { get :qr_code, params: { id: race_game.to_param } }
+    its(:content_type) { is_expected.to eq 'image/svg+xml' }
+
+    it 'should generate the qr code' do
+      # expect(RQRCode::QRCode).to receive(:new).with(
+    end
+  end
+
   describe 'choose first' do
     let(:race_game) { FactoryGirl.create :race_game }
     subject { post :choose_first, params: { id: race_game.to_param } }

@@ -44,6 +44,10 @@ class RaceGamesController < ApplicationController # :nodoc:
     @race_game = RaceGame.last
   end
 
+  def qr_code
+    send_data '', filename: 'qr_code.svg', disposition: 'inline', type: 'image/svg+xml'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
