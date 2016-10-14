@@ -59,10 +59,15 @@ RSpec.describe RaceGamesController, type: :controller do
 
   describe 'qr_code' do
     subject { get :qr_code, params: { id: race_game.to_param } }
+
     its(:content_type) { is_expected.to eq 'image/svg+xml' }
 
     it 'should generate the qr code' do
-      # expect(RQRCode::QRCode).to receive(:new).with(
+      qrcode = double("qrcode")
+      allow(RQRCode::QRCode).to receive(:new).with(race_game_url(race_game)) {qrcode}
+      expect(qrcode).to receive(:as_svg) { "an svg image" }
+      expect(controller).to receive(:send_data).with("an svg image", anything) { controller.head :ok }
+      subject
     end
   end
 

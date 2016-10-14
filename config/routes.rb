@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :race_games do
     member do
       post 'choose_first'
-      post 'qr_code'
+      get 'qr_code'
     end
     collection do
       get 'join_last'

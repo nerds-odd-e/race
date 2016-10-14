@@ -1,5 +1,5 @@
 class RaceGamesController < ApplicationController # :nodoc:
-  before_action :set_race_game, only: [:show, :choose_first]
+  before_action :set_race_game, only: [:show, :choose_first, :qr_code]
 
   # GET /race_games
   # GET /race_games.json
@@ -45,7 +45,9 @@ class RaceGamesController < ApplicationController # :nodoc:
   end
 
   def qr_code
-    send_data '', filename: 'qr_code.svg', disposition: 'inline', type: 'image/svg+xml'
+    qrcode = RQRCode::QRCode.new(race_game_url(@race_game))
+    svg = qrcode.as_svg
+    send_data svg, filename: 'qr_code.svg', disposition: 'inline', type: 'image/svg+xml'
   end
 
   private
