@@ -13,7 +13,6 @@ class RacePlayersController < ApplicationController # :nodoc:
   end
 
   def new
-    create
   end
 
   private

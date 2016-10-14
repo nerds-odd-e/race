@@ -50,13 +50,6 @@ RSpec.describe RaceGamesController, type: :controller do
     end
   end
 
-  describe 'join last game' do
-    it 'assigns a new race_game as @race_game' do
-      get :join_last
-      expect(assigns(:race_game)).to eq(RaceGame.last)
-    end
-  end
-
   describe 'qr_code' do
     subject { get :qr_code, params: { id: race_game.to_param } }
 

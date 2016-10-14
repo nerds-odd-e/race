@@ -1,3 +1,6 @@
-%h1 New Race Player
-= render 'form', race_player: @race_player
-= link_to 'Back', race_players_path
+.player-body
+  %h1
+    Welcome To the Race Game
+  =button_to 'Join', race_game_race_players_path(@race_game)
+  .ad
+    =image_tag('sg.png')

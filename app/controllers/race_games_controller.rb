@@ -40,10 +40,6 @@ class RaceGamesController < ApplicationController # :nodoc:
     end
   end
 
-  def join_last
-    @race_game = RaceGame.last
-  end
-
   def qr_code
     send_data(
       RQRCode::QRCode.new(new_race_game_race_player_url(@race_game)).as_svg,

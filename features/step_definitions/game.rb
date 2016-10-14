@@ -4,7 +4,7 @@ Given(/^the organizer created a game$/) do
 end
 
 def join_last_game
-  visit join_last_race_games_url
+  visit new_race_game_race_player_url(RaceGame.last)
   click_button 'Join'
   @player1 = RacePlayer.last
 end

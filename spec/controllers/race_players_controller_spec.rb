@@ -15,13 +15,9 @@ RSpec.describe RacePlayersController, type: :controller do
     before { get :new, params: { race_game_id: race_game } }
 
     describe 'assigns a new race_player as @race_player' do
-      subject { assigns(:race_player) }
-      it { is_expected.to be_a(RacePlayer) }
-      it { is_expected.to be_persisted }
-      its(:race_game) { is_expected.to eq race_game }
+      subject { assigns(:race_game) }
+      it { is_expected.to eq race_game }
     end
-
-    it { is_expected.to redirect_to RacePlayer.last }
   end
 
   describe 'POST #create' do

@@ -4,9 +4,6 @@ Rails.application.routes.draw do
       post 'choose_first'
       get 'qr_code'
     end
-    collection do
-      get 'join_last'
-    end
     resources :race_players, shallow: true do
       resources :race_moves, shallow: true
     end
