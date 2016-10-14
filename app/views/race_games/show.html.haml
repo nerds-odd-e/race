@@ -14,7 +14,7 @@
     =button_to 'Choose-First', choose_first_race_game_path(@race_game)
 
 .qr-code
-  =image_tag('qr.png')
+  =image_tag(qr_code_race_game_path(@race_game, format: 'svg'))
 %ul.cars
   - @race_game.sorted_players.each do |player|
     %li.car{id: "car#{player.index}"}

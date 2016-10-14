@@ -45,9 +45,11 @@ class RaceGamesController < ApplicationController # :nodoc:
   end
 
   def qr_code
-    qrcode = RQRCode::QRCode.new(race_game_url(@race_game))
-    svg = qrcode.as_svg
-    send_data svg, filename: 'qr_code.svg', disposition: 'inline', type: 'image/svg+xml'
+    send_data(
+      RQRCode::QRCode.new(new_race_game_race_player_url(@race_game)).as_svg,
+      filename: 'qr_code.svg',
+      disposition: 'inline',
+      type: 'image/svg+xml')
   end
 
   private
