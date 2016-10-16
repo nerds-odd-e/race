@@ -25,10 +25,10 @@ class RaceMovesController < ApplicationController # :nodoc:
   # POST /race_moves
   # POST /race_moves.json
   def create
-    @race_move = @race_player.race_moves.new(race_move_params)
+    @race_move = @race_player.race_moves.create(race_move_params)
 
     respond_to do |format|
-      if @race_move.save
+      if @race_move.persisted?
         flash[:notice] = 'You just made the move'
       else
         flash[:alert] = @race_move.errors.full_messages.join(', ')

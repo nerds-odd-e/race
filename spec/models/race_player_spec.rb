@@ -16,7 +16,7 @@ RSpec.describe RacePlayer, type: :model do
     its(:dice_face) { is_expected.to be_nil }
 
     context 'when makes the next move' do
-      before { subject.race_moves.new }
+      before { subject.race_moves.create({}) }
       its(:dice_face) { is_expected.to eq 3 }
     end
   end

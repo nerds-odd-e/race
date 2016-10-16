@@ -11,7 +11,7 @@ class RaceGamesController < ApplicationController # :nodoc:
   # GET /race_games/1.json
   def show
     @inner_only = params[:inner_only]
-    render :layout => nil if @inner_only
+    render layout: nil if @inner_only
   end
 
   # GET /race_games/new

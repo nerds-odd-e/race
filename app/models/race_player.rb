@@ -1,6 +1,14 @@
 class RacePlayer < ApplicationRecord # :nodoc:
   belongs_to :race_game
-  has_many :race_moves
+  has_many :race_moves do
+    def create(args, &block)
+      super(
+        args.to_h.reverse_merge(
+          dice_face: proxy_association.owner.next_rand,
+          tick: proxy_association.owner.race_game.tick
+        ), &block)
+    end
+  end
 
   def index
     id

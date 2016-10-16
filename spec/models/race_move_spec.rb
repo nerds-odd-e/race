@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RaceMove, type: :model do
   let(:race_player) { FactoryGirl.create :race_player }
-  subject { race_player.race_moves.new choice: 'normal' }
+  subject { race_player.race_moves.create choice: 'normal' }
 
   context 'before the game start ticking' do
     before { subject.valid? }
@@ -45,7 +45,7 @@ RSpec.describe RaceMove, type: :model do
   end
 
   context 'a super move' do
-    subject { race_player.race_moves.new choice: 'super' }
+    subject { race_player.race_moves.create choice: 'super' }
     context 'when the rand number is 3' do
       before { race_player.next_rand = 3 }
       it { expect { subject }.to change(race_player, :steps).by(3) }
@@ -53,7 +53,7 @@ RSpec.describe RaceMove, type: :model do
 
       context 'when the player already made a super move before' do
         before { race_player.next_rand = 6 }
-        before { race_player.race_moves.new choice: 'super' }
+        before { race_player.race_moves.create choice: 'super' }
         it { expect { subject }.to change(race_player, :steps).from(6).to(11) }
         it { expect { subject }.to change(race_player, :scars).from(1).to(2) }
       end

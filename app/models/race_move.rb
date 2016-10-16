@@ -4,9 +4,6 @@ class RaceMove < ApplicationRecord # :nodoc:
                                    message: 'has not started yet')
   validates_uniqueness_of(:tick, scope: :race_player_id,
                                  message: 'already moved')
-  before_validation :fetch_tick
-  after_initialize :fetch_dice_face
-
   def super?
     choice == 'super'
   end
@@ -17,15 +14,5 @@ class RaceMove < ApplicationRecord # :nodoc:
     else
       2 - dice_face % 2
     end
-  end
-
-  private
-
-  def fetch_tick
-    self.tick = race_player.race_game.tick
-  end
-
-  def fetch_dice_face
-    self.dice_face ||= race_player.next_rand
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe RaceGame, type: :model do
   before do
     (1..4).each do |steps|
       player = RacePlayer.create race_game: subject
-      RaceMove.create! race_player: player, dice_face: steps, choice: 'super'
+      player.race_moves.create(dice_face: steps, choice: 'super')
     end
   end
 
