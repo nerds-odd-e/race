@@ -27,7 +27,7 @@ class RacePlayer < ApplicationRecord # :nodoc:
   end
 
   def next_rand
-    self[:next_rand] || 1 + [1,1,2,2,2,3,3,4,4,5,6].sample
+    self[:next_rand] || [1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6].sample
   end
 
   private

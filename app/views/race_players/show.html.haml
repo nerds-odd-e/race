@@ -15,6 +15,15 @@
           #face-gif
             =image_tag("dice.gif")
   .distance
+    -if @race_player.dice_face
+      %p
+        -scars = @race_player.scars
+        -scars-=1 if @race_player.race_moves.last.super?
+        %em You choice was "#{@race_player.race_moves.last.choice}",
+        %em and your car had #{scars} damages.
+        %br
+        %em You went #{[0, @race_player.race_moves.last.moves - scars].max} step in this tick.
+
     %strong Current Distance:
     = @race_player.steps
 
