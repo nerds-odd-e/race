@@ -9,8 +9,4 @@ RSpec.describe RaceGame, type: :model do
       player.race_moves.create(dice_face: steps, choice: 'super')
     end
   end
-
-  it 'sort the player' do
-    expect(subject.sorted_players.first.steps).to eq 4
-  end
 end
