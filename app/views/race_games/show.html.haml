@@ -1,13 +1,13 @@
 #spectator
   .top-bar
     .top-bar-block
-      %strong Total Players:
+      %strong #{RaceGame.human_attribute_name :total_players}:
       = @race_game.race_players.count
     .top-bar-block#tick
-      %strong Tick:
+      %strong #{RaceGame.human_attribute_name :tick}:
       = @race_game.tick
     .top-bar-block
-      %strong Moved:
+      %strong #{RaceGame.human_attribute_name :moved}:
       = @race_game.race_players.select{|x| x.race_moves.find_by_tick(@race_game.tick)}.count
     .top-bar-block
       = notice
@@ -21,7 +21,7 @@
 
 -unless @inner_only
   .controls
-    =button_to 'Choose-First', choose_first_race_game_path(@race_game)
+    =button_to RaceGame.human_attribute_name(:start_next_tick), choose_first_race_game_path(@race_game)
   .qr-code
     =image_tag(qr_code_race_game_path(@race_game, format: 'svg'))
 

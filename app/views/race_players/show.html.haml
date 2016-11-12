@@ -19,17 +19,18 @@
       %p
         -scars = @race_player.scars
         -scars-=1 if @race_player.race_moves.last.super?
-        %em You choice was "#{@race_player.race_moves.last.choice}",
-        %em and your car had #{scars} damages.
+        %em #{RacePlayer.human_attribute_name :your_choice_was} : "#{RacePlayer.human_attribute_name @race_player.race_moves.last.choice}",
         %br
-        %em You went #{[0, @race_player.race_moves.last.moves - scars].max} step in this tick.
+        %em #{RacePlayer.human_attribute_name :your_previous_scars}: #{scars}
+        %br
+        %em #{RacePlayer.human_attribute_name :you_went}: #{[0, @race_player.race_moves.last.moves - scars].max}
 
-    %strong Current Distance:
+    %strong #{RacePlayer.human_attribute_name :current_distance}:
     = @race_player.steps
 
-  %h1 Your Choice For Next Move
-  =button_to 'normal', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'normal'}}, class: "normal"
-  =button_to 'super', race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'super'}}, class: "super"
+  %h1= RacePlayer.human_attribute_name :your_choice_for_next_move
+  =button_to RacePlayer.human_attribute_name(:normal), race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'normal'}}, class: "normal"
+  =button_to RacePlayer.human_attribute_name(:super), race_player_race_moves_path(race_player_id: @race_player), params: {race_move: {choice: 'super'}}, class: "super"
 
 :javascript
   $('#notice').fadeIn().delay(4000).fadeOut();

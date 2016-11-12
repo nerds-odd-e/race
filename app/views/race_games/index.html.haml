@@ -1,9 +1,9 @@
 %p#notice= notice
-%h1=t('race_games')
+%h1=RaceGame.model_name.human(count: 2)
 %table
   %thead
     %tr
-      %th= t('distance')
+      %th= RaceGame.human_attribute_name :distance
       %th{:colspan => "3"}
   %tbody
     - @race_games.each do |race_game|

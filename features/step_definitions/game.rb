@@ -39,7 +39,7 @@ end
 
 When(/^the organizer starts a new tick$/) do
   visit race_game_url RaceGame.last
-  click_button 'Choose-First'
+  click_button 'Start Next Tick'
 end
 
 Then(/^he should not be able to move( again)?$/) do |again|

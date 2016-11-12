@@ -35,7 +35,7 @@ RSpec.describe RaceMovesController, type: :controller do
 
       it 'has error message' do
         subject
-        expect(flash[:alert]).to eq 'Tick has not started yet'
+        expect(flash[:alert]).to include 'has not started yet'
       end
     end
   end
