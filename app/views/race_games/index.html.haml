@@ -1,9 +1,9 @@
 %p#notice= notice
-%h1 Race Games
+%h1=t('race_games')
 %table
   %thead
     %tr
-      %th Distance
+      %th= t('distance')
       %th{:colspan => "3"}
   %tbody
     - @race_games.each do |race_game|
@@ -13,4 +13,4 @@
         %td= link_to 'Edit', edit_race_game_path(race_game)
         %td= link_to 'Destroy', race_game, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Race Game', new_race_game_path
+= link_to t("start_new_game"), new_race_game_path

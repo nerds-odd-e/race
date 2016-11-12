@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  race_games: 'Race Games'
+  distance: 'Distance'
+  start_new_game: 'Start New Game'
+  activerecord:
+    models:
+      race_game: 'Race Game'
+    attributes:
+      distance: 'Distance'

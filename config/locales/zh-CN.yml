@@ -1,0 +1,11 @@
+zh-CN:
+  race_games: '赛车游戏'
+  distance: '距离'
+  start_new_game: '开始新游戏'
+  activerecord:
+    models:
+      race_game: '赛车游戏'
+    attributes:
+      race_game:
+        distance: '距离'
+
