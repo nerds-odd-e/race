@@ -34,6 +34,7 @@ gem 'rubocop', require: false
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'jasmine-rails'
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false

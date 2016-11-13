@@ -42,6 +42,8 @@ en:
         your_choice_was: 'Your choice was'
         your_previous_scars: 'Scars that was on your car'
         you_went: 'The distance you went in this tick'
+      race_move:
+        tick: 'Tick'
     errors:
       models:
         race_move:
