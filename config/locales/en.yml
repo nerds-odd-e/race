@@ -21,33 +21,3 @@
 
 en:
   welcome: 'Welcome To the Race Game'
-  race_games: 'Race Games'
-  start_new_game: 'Start New Game'
-  activerecord:
-    models:
-      race_game: 'Race Game'
-    attributes:
-      race_game:
-        distance: 'Distance'
-        total_players: 'Total Players'
-        tick: 'Tick'
-        moved: 'Player moved in current tick'
-        start_next_tick: 'Start Next Tick'
-      race_player:
-        join: 'Join'
-        current_distance: 'Current Distance'
-        your_choice_for_next_move: 'Please Choose Your Next Move'
-        normal: 'normal'
-        super: 'super'
-        your_choice_was: 'Your choice was'
-        your_previous_scars: 'Scars that was on your car'
-        you_went: 'The distance you went in this tick'
-      race_move:
-        tick: 'Tick'
-    errors:
-      models:
-        race_move:
-          attributes:
-            tick:
-              taken: 'already moved'
-              greater_than: 'has not started yet'
