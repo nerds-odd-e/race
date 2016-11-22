@@ -50,5 +50,5 @@ When(/^Admin press next button$/) do
 end
 
 Then(/^Moved players number is (\d+)$/) do |moved_players|
-  page.should have_content(moved_players)
+  page.should have_content("moved #{moved_players}")
 end
