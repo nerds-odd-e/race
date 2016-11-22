@@ -12,4 +12,17 @@ class Dice
       return 2
     end
   end
+
+  def calc_super_step(dice)
+    return dice
+  end
+
+  def get_step_num(dice, damage)
+    steps = dice - damage
+    if steps < 0
+      return 0
+    else
+      return steps
+    end
+  end
 end
