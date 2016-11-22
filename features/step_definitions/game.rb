@@ -22,7 +22,10 @@ Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, upd
 end
 
 Given(/^join (\d+) players$/) do |join_players|
-  FactoryGirl.create_list(:player, join_players.to_i)
+  join_players.to_i.times do
+    visit new_player_url
+    click_on "参加"
+  end
   FactoryGirl.create(:game, {total: join_players})
 end
 
