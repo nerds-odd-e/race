@@ -34,115 +34,30 @@ Feature: Emerson's car racing game
   Scenario Outline: check step and damage
     Given There is a new game
     And   The player join the game
-    And The player has <existing damage> damage
-    When  The player goes normal
+    And   The player has <existing damage> damage
+    When  The player goes <choice>
     And   The dice show <dice number>
     Then  The car move <number of steps> steps and has <updated damage> damage
 
-    Examples:
-      | existing damage | dice number| number of steps | updated damage |
-      |  0              |  1         |  1              | 0              |
-      |  0              |  3         |  1              | 0              |
-      |  1              |  1         |  0              | 1              |
-      |  1              |  3         |  0              | 1              |
+    Examples: go normal
+      | existing damage | choice |dice number| number of steps | updated damage |
+      |  0              | normal | 1         |  1              | 0              |
+      |  0              | normal | 3         |  1              | 0              |
+      |  1              | normal | 1         |  0              | 1              |
+      |  1              | normal | 3         |  0              | 1              |
+      |  0              | normal | 2         |  2              | 0              |
+      |  0              | normal | 4         |  2              | 0              |
+      |  1              | normal | 2         |  1              | 1              |
+      |  1              | normal | 4         |  1              | 1              |
+      |  2              | normal | 3         |  0              | 2              |
+      |  5              | normal | 4         |  0              | 5              |
 
+    Examples: go super
+      | existing damage | choice |dice number| number of steps | updated damage |
+      |  0              | super  | 3         |  3              | 1              |
+      |  0              | super  | 6         |  6              | 1              |
+      |  1              | super  | 3         |  2              | 2              |
+      |  1              | super  | 6         |  5              | 2              |
+      |  3              | super  | 3         |  0              | 4              |
+      |  7              | super  | 6         |  0              | 8              |
 
-  @developing
-  Scenario: check step and damage(normal even number)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes normal
-    And   The dice show 2
-    Then  The car move 2 steps and has 0 damage
-
-  @developing
-  Scenario: check step and damage(normal even number)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes normal
-    And   The dice show 4
-    Then  The car move 2 steps and has 0 damage
-
-  @developing
-  Scenario: check step and damage(normal even number damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 2
-    Then  The car move 1 steps and has 1 damage
-
-  @developing
-  Scenario: check step and damage(normal even number damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 4
-    Then  The car move 1 steps and has 1 damage
-
-  @developing
-  Scenario: check step and damage(normal over available steps)
-    Given The player has 2 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 3
-    Then  The car move 0 steps and has 2 damage
-
-  @developing
-  Scenario: check step and damage(normal over available steps)
-    Given The player has 5 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 4
-    Then  The car move 0 steps and has 5 damage
-
-  @developing
-  Scenario: check step and damage(normal even number)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes normal
-    And   The dice show 4
-    Then  The car move 2 steps and has 0 damage
-
-
-
-  Scenario: check step and damage(super below damage)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes super
-    And   The dice show 3
-    Then  The car move 3 steps and has 1 damage
-
-  Scenario: check step and damage(super below damage)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes super
-    And   The dice show 6
-    Then  The car move 6 steps and has 1 damage
-
-  Scenario: check step and damage(super below damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes super
-    And   The dice show 3
-    Then  The car move 2 steps and has 2 damage
-
-  Scenario: check step and damage(super below damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes super
-    And   The dice show 6
-    Then  The car move 5 steps and has 2 damage
-
-  Scenario: check step and damage(super below damage)
-    Given The player has 3 damage
-    And   The player joined the game
-    When  The player goes super
-    And   The dice show 3
-    Then  The car move 0 steps and has 4 damage
-
-  Scenario: check step and damage(super over available damage)
-    Given The player has 7 damage
-    And   The player joined the game
-    When  The player goes super
-    And   The dice show 6
-    Then  The car move 0 steps and has 8 damage
