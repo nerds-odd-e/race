@@ -1,0 +1,2 @@
+class Dice < ApplicationRecord
+end
