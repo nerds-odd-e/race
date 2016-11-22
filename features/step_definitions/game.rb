@@ -2,6 +2,8 @@ Given(/^There is a new game$/) do
 end
 
 Given(/^The player join the game$/) do
+  visit new_player_url
+  click_on "参加"
 end
 
 When(/^The player goes normal$/) do
