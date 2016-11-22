@@ -35,9 +35,10 @@ Given(/^new (\d+) players$/) do |new_players|
 end
 
 When(/^Admin press next button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit '/big_screen'
+  click_on 'Next'
 end
 
-Then(/^Moved players number is (\d+)$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^Moved players number is (\d+)$/) do |moved_players|
+  page.should have_content(moved_players)
 end
