@@ -21,11 +21,22 @@ Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, upd
   expect(updated_damage.to_i).to eq @current_player.damage
 end
 
-When(/^The player status are$/) do |table|
- table_raw = table.raw
- table_raw.delete_at(0)
+Given(/^join (\d+) players$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
- table_raw.each do |row|
-   step "The car move #{row[0]} steps and has #{row[1]} damage"
- end
+Given(/^thrown (\d+) players$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^new (\d+) players$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^Admin press next button$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^Moved players number is (\d+)$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
 end
