@@ -7,6 +7,7 @@ Given(/^The player join the game$/) do
 end
 
 When(/^The player goes normal$/) do
+  click_on "Normal"
 end
 
 When(/^The dice show (\d+)$/) do |arg1|
