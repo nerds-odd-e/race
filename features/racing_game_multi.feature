@@ -1,5 +1,6 @@
 Feature: multi player game
 
+  @developing
   Scenario Outline: check after push [next] button
     Given join <join players> players
     And   thrown <thrown players> players
