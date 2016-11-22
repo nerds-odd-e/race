@@ -21,16 +21,17 @@ Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, upd
   expect(updated_damage.to_i).to eq @current_player.damage
 end
 
-Given(/^join (\d+) players$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^join (\d+) players$/) do |join_players|
+  FactoryGirl.create_list(:player, join_players.to_i)
+  FactoryGirl.create(:game, {total: join_players})
 end
 
-Given(/^thrown (\d+) players$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^thrown (\d+) players$/) do |thrown_players|
+  Player.limit(thrown_players).update_all(throw_flag: true)
 end
 
-Given(/^new (\d+) players$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^new (\d+) players$/) do |new_players|
+  FactoryGirl.create_list(:player, new_players.to_i)
 end
 
 When(/^Admin press next button$/) do
