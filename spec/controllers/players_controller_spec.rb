@@ -36,6 +36,13 @@ RSpec.describe PlayersController, type: :controller do
   # PlayersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  describe "PUT #select_dice" do
+    it "render show screen" do
+      put :select_dice, params: {id:1}, session: valid_session
+      expect(response).to redirect_to '/players/1'
+    end
+  end
+
   describe "GET #index" do
     it "assigns all players as @players" do
       player = Player.create! valid_attributes
