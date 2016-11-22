@@ -6,11 +6,10 @@ Given(/^The player join the game$/) do
   click_on "参加"
 end
 
-When(/^The player goes normal$/) do
-  click_on "Normal"
-end
-
-When(/^The dice show (\d+)$/) do |arg1|
+When(/^The player goes (\w+) and the dice show (\d+)$/) do |choice, next_dice_number|
+  @current_player = Player.last
+  @current_player.update(next_dice_number: next_dice_number)
+  click_on choice
 end
 
 Then(/^The car move (\d+) steps and has (\d+) damage$/) do |arg1, arg2|
