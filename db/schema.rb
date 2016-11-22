@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122013922) do
+ActiveRecord::Schema.define(version: 20161122072843) do
 
   create_table "players", force: :cascade do |t|
-    t.integer  "distance",   default: 0
-    t.integer  "damage",     default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "distance",         default: 0
+    t.integer  "damage",           default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "next_dice_number"
   end
 
 end
