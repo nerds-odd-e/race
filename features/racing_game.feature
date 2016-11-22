@@ -30,34 +30,24 @@ Feature: Emerson's car racing game
 #      |0              |normal|3   |
 #    Then  The car move 1 steps and has 0 damage
 
-  Scenario: check step and damage(normal odd number)
+  @developing
+  Scenario Outline: check step and damage
     Given There is a new game
     And   The player join the game
+    And The player has <existing damage> damage
     When  The player goes normal
-    And   The dice show 1
-    Then  The car move 1 steps and has 0 damage
+    And   The dice show <dice number>
+    Then  The car move <number of steps> steps and has <updated damage> damage
 
-  Scenario: check step and damage(normal odd number)
-    Given There is a new game
-    And   The player join the game
-    When  The player goes normal
-    And   The dice show 3
-    Then  The car move 1 steps and has 0 damage
+    Examples:
+      | existing damage | dice number| number of steps | updated damage |
+      |  0              |  1         |  1              | 0              |
+      |  0              |  3         |  1              | 0              |
+      |  1              |  1         |  0              | 1              |
+      |  1              |  3         |  0              | 1              |
 
-  Scenario: check step and damage(normal odd number damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 1
-    Then  The car move 0 steps and has 1 damage
 
-  Scenario: check step and damage(normal odd number damage)
-    Given The player has 1 damage
-    And   The player joined the game
-    When  The player goes normal
-    And   The dice show 3
-    Then  The car move 0 steps and has 1 damage
-
+  @developing
   Scenario: check step and damage(normal even number)
     Given There is a new game
     And   The player join the game
@@ -65,6 +55,7 @@ Feature: Emerson's car racing game
     And   The dice show 2
     Then  The car move 2 steps and has 0 damage
 
+  @developing
   Scenario: check step and damage(normal even number)
     Given There is a new game
     And   The player join the game
@@ -72,6 +63,7 @@ Feature: Emerson's car racing game
     And   The dice show 4
     Then  The car move 2 steps and has 0 damage
 
+  @developing
   Scenario: check step and damage(normal even number damage)
     Given The player has 1 damage
     And   The player joined the game
@@ -79,6 +71,7 @@ Feature: Emerson's car racing game
     And   The dice show 2
     Then  The car move 1 steps and has 1 damage
 
+  @developing
   Scenario: check step and damage(normal even number damage)
     Given The player has 1 damage
     And   The player joined the game
@@ -86,6 +79,7 @@ Feature: Emerson's car racing game
     And   The dice show 4
     Then  The car move 1 steps and has 1 damage
 
+  @developing
   Scenario: check step and damage(normal over available steps)
     Given The player has 2 damage
     And   The player joined the game
@@ -93,6 +87,7 @@ Feature: Emerson's car racing game
     And   The dice show 3
     Then  The car move 0 steps and has 2 damage
 
+  @developing
   Scenario: check step and damage(normal over available steps)
     Given The player has 5 damage
     And   The player joined the game
@@ -100,6 +95,7 @@ Feature: Emerson's car racing game
     And   The dice show 4
     Then  The car move 0 steps and has 5 damage
 
+  @developing
   Scenario: check step and damage(normal even number)
     Given There is a new game
     And   The player join the game

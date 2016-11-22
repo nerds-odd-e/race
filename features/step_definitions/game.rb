@@ -25,11 +25,11 @@ end
 When(/^The player goes super$/) do
 end
 
-# When(/^The player status are$/) do |table|
-#   table_raw = table.raw
-#   table_raw.delete_at(0)
-#
-#   table_raw.each do |row|
-#     step "The car move #{row[0]} steps and has #{row[1]} damage"
-#   end
-# end
+ When(/^The player status are$/) do |table|
+   table_raw = table.raw
+   table_raw.delete_at(0)
+
+   table_raw.each do |row|
+     step "The car move #{row[0]} steps and has #{row[1]} damage"
+   end
+ end
