@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get "/big_screen", to: "games#big_screen"
 
-  put "/players/:id/select_dice", to: "players#select_dice"
   resources :players
+
+  put "/players/:id/select_dice", to: "players#select_dice"
+  get "/players/:id/:thrown", to: "players#show"
+
 end

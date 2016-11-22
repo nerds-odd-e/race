@@ -2,7 +2,8 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   def select_dice()
-    redirect_to "/players/1"
+    # TODO idを変化させる
+    redirect_to "/players/1/thrown"
   end
 
   # GET /players
@@ -14,6 +15,9 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    if params[:thrown].present?
+      @thrown = true
+    end
   end
 
   # GET /players/new
@@ -73,6 +77,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.fetch(:player, {})
+        {}#params.require(:player).permit(:distance,:damage,:next_dice_number)
     end
 end

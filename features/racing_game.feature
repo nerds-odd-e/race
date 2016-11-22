@@ -1,4 +1,8 @@
 Feature: Emerson's car racing game
+  Scenario: check first view show page
+    Given There is a new game
+    When  The player join the game
+    Then  View has no dice result
 
   Scenario Outline: check step and damage
     Given There is a new game
@@ -11,7 +15,7 @@ Feature: Emerson's car racing game
       | existing damage | choice |dice number| number of steps | updated damage |
       |  0              | Normal | 1         |  1              | 0              |
       |  0              | Normal | 3         |  1              | 0              |
-#      |  1              | Normal | 1         |  0              | 1              |
+      |  1              | Normal | 1         |  0              | 1              |
 #      |  1              | Normal | 3         |  0              | 1              |
 #      |  0              | Normal | 2         |  2              | 0              |
 #      |  0              | Normal | 4         |  2              | 0              |

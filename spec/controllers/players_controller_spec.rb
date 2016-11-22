@@ -24,11 +24,19 @@ RSpec.describe PlayersController, type: :controller do
   # Player. As you add validations to Player, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      'distance' => 10,
+      'damage' => 0,
+      'next_dice_number' => 3,
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      'distance' => nil,
+      'damage' => 0,
+      'next_dice_number' => 3
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -39,7 +47,7 @@ RSpec.describe PlayersController, type: :controller do
   describe "PUT #select_dice" do
     it "render show screen" do
       put :select_dice, params: {id:1}, session: valid_session
-      expect(response).to redirect_to '/players/1'
+      expect(response).to redirect_to '/players/1/thrown'
     end
   end
 
@@ -56,6 +64,18 @@ RSpec.describe PlayersController, type: :controller do
       player = Player.create! valid_attributes
       get :show, params: {id: player.to_param}, session: valid_session
       expect(assigns(:player)).to eq(player)
+    end
+
+    it "assigns the requested player as @player when thrown" do
+      player = Player.create! valid_attributes
+      get :show, params: {id: player.to_param, thrown: "thrown"}, session: valid_session
+      expect(assigns(:player)).to eq(player)
+    end
+
+    it "after shown second views" do
+      player = Player.create! valid_attributes
+      get :show, params: {id: player.to_param, thrown: "thrown"}, session: valid_session
+      expect(assigns(:thrown)).to be_truthy
     end
   end
 
@@ -95,29 +115,23 @@ RSpec.describe PlayersController, type: :controller do
     end
 
     context "with invalid params" do
-      it "assigns a newly created but unsaved player as @player" do
-        post :create, params: {player: invalid_attributes}, session: valid_session
-        expect(assigns(:player)).to be_a_new(Player)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, params: {player: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
-      end
     end
   end
 
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          'distance' => 10,
+          'damage' => 0,
+          'next_dice_number' => 3,
+        }
       }
 
       it "updates the requested player" do
         player = Player.create! valid_attributes
         put :update, params: {id: player.to_param, player: new_attributes}, session: valid_session
         player.reload
-        skip("Add assertions for updated state")
       end
 
       it "assigns the requested player as @player" do
@@ -138,12 +152,6 @@ RSpec.describe PlayersController, type: :controller do
         player = Player.create! valid_attributes
         put :update, params: {id: player.to_param, player: invalid_attributes}, session: valid_session
         expect(assigns(:player)).to eq(player)
-      end
-
-      it "re-renders the 'edit' template" do
-        player = Player.create! valid_attributes
-        put :update, params: {id: player.to_param, player: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
       end
     end
   end

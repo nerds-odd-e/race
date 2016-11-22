@@ -15,6 +15,10 @@ RSpec.describe PlayersController, type: :routing do
       expect(:get => "/players/1").to route_to("players#show", :id => "1")
     end
 
+    it "routes to #show" do
+      expect(:get => "/players/1/thrown").to route_to("players#show", :id => "1", :thrown => "thrown")
+    end
+
     it "routes to #select_dice" do
       expect(:put => "/players/1/select_dice").to route_to("players#select_dice", :id => "1")
     end

@@ -1,4 +1,8 @@
-Dice: 1
+- if @thrown
+  %p Dice: 1
+  %p Step: 0
+  %p Last Choice: Normal
+  %p Distance: 0
 
-= button_to 'Normal', @player, :method => :put
-= button_to 'Super', @player, :method => :put
+= button_to 'Normal', '/players/1/select_dice', :method => :put
+= button_to 'Super', '/players/1/select_dice', :method => :put

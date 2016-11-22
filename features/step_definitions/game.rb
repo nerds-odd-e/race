@@ -6,6 +6,13 @@ Given(/^The player join the game$/) do
   click_on "参加"
 end
 
+Given(/^View has no dice result$/) do
+  page.should have_no_content 'Dice'
+  page.should have_no_content 'Step'
+  page.should have_no_content 'Last Choice'
+  page.should have_no_content 'Distance'
+end
+
 Given(/^The player has (\d+) damage$/) do |damage|
   @current_player = Player.last
   @current_player.damage = damage
