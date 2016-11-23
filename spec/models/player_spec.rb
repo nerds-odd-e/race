@@ -7,9 +7,7 @@ RSpec.describe Player, type: :model do
     its(:steps) { is_expected.to eq 0}
 
     context 'when the player played 3' do
-      before {
-        subject.go_super 3
-      }
+      before { subject.go_super 3 }
 
       its(:steps) { is_expected.to eq 3}
     end

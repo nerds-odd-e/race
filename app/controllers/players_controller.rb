@@ -2,7 +2,8 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy, :select_dice]
 
   def select_dice()
-    redirect_to "/players/#{@player.id}/thrown"
+    @player.go_super(3)
+    redirect_to player_path(@player, thrown: "thrown")
   end
 
   # GET /players
