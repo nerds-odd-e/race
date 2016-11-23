@@ -4,6 +4,7 @@ Feature: Emerson's car racing game
     When  The player join the game
     Then  View has no dice result
 
+  @developing
   Scenario Outline: check step and damage
     Given There is a new game
     And   The player join the game
