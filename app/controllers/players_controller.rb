@@ -15,18 +15,18 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    if params[:thrown].present?
-      @thrown = true
-    end
+    @thrown = params[:thrown].present?
 
     dice = Dice.new
-    dice_number = @player.next_dice_number
-    if dice_number
-      step_num = dice.calc_normal_step(dice_number)
-      @step = dice.get_step_num(step_num, @player.damage)
-    else
-      @step = 0
+    @current_dice_number = @player.next_dice_number
+    @player.steps = 0
+    if @current_dice_number
+      step_num = dice.calc_normal_step(@current_dice_number)
+      @player.steps = dice.get_step_num(step_num, @player.damage)
     end
+
+    @player.next_dice_number = dice.get_number
+    @player.save
   end
 
   # GET /players/new
