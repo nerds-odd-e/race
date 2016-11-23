@@ -1,6 +1,9 @@
 - if @thrown
   %p Dice: 1
-  %p Step: #{@step}
+  %p
+    Step:
+    %span.steps
+      = @player.steps
   %p Last Choice: Normal
   %p Distance: 0
 
