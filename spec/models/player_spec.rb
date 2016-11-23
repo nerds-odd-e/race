@@ -23,7 +23,7 @@ RSpec.describe Player, type: :model do
       context "when the player #{method} with #{number}" do
         before { subject.send(method, number) }
         its(:steps) { is_expected.to eq expected_steps }
-        its(:distance) { is_expected.to eq expected_distance }
+        its(:distance) { is_expected.to eq expected_distance}
       end
     end
   end
@@ -33,22 +33,6 @@ RSpec.describe Player, type: :model do
     context 'when go super' do
       before { subject.go_super 3 }
       its(:damage) { is_expected.to eq 1 }
-    end
-  end
-
-  describe '#update_steps' do
-    it 'update result steps to move' do
-      player = FactoryGirl.create :player, {damage: 1}
-      player.update_steps(2)
-      expect(player.steps).to eq 1
-    end
-  end
-
-  describe '#update_distance' do
-    it 'update distance use step and damage' do
-      player = FactoryGirl.create :player, {steps: 1, distance: 0}
-      player.update_distance
-      expect(player.distance).to eq 1
     end
   end
 
