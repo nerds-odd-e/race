@@ -7,7 +7,6 @@ class PlayersController < ApplicationController
     else
       @player.go_random_super
     end
-    @current_dice_number = @player.next_dice_number
 
     redirect_to player_path(@player, thrown: "thrown")
   end
