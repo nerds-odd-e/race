@@ -6,6 +6,8 @@
       = @player.steps
   %p Last Choice: Normal
   %p Distance: 0
+  %p
+    Damage: #{@player.damage}
 
 = button_to 'Normal', "/players/#{@player.id}/select_dice", :method => :put
 = button_to 'Super', "/players/#{@player.id}/select_dice", :method => :put
