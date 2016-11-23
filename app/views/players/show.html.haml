@@ -10,7 +10,9 @@
   %p Last Choice: Normal
   %p Distance: 0
   %p
-    Damage: #{@player.damage}
+    Damage:
+    %span.damage
+      = @player.damage
 
 %div.buttons
   = button_to 'Normal', select_dice_player_path(@player, choice: 'normal'), :method => :put
