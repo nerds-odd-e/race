@@ -42,4 +42,12 @@ RSpec.describe Player, type: :model do
       expect(player.steps).to eq 1
     end
   end
+
+  describe '#dice_number' do
+    it '' do
+      player = FactoryGirl.create :player
+      player.dice_number
+      expect([1, 2, 3, 4, 5, 6]).to include player.current_dice_number
+    end
+  end
 end

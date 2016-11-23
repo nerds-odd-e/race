@@ -2,7 +2,7 @@
   %p
     Dice:
     %span.dice
-      = @current_dice_number
+      = @player.current_dice_number
   %p
     Step:
     %span.steps
@@ -12,5 +12,6 @@
   %p
     Damage: #{@player.damage}
 
-= button_to 'Normal', select_dice_player_path(@player, choice: 'normal'), :method => :put
-= button_to 'Super', select_dice_player_path(@player, choice: 'super'), :method => :put
+%div.buttons
+  = button_to 'Normal', select_dice_player_path(@player, choice: 'normal'), :method => :put
+  = button_to 'Super', select_dice_player_path(@player, choice: 'super'), :method => :put

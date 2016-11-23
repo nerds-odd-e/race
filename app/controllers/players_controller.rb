@@ -22,15 +22,7 @@ class PlayersController < ApplicationController
   def show
     @thrown = params[:thrown].present?
 
-    @current_dice_number = @player.next_dice_number
-    @player.steps = 0
-    if @current_dice_number
-      @player.go_normal(@current_dice_number)
-      @player.update_steps
-    end
-
-    @player.next_dice_number = Dice.number
-    @player.save
+    @player.update_steps
   end
 
   # GET /players/new
