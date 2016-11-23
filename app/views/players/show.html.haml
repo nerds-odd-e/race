@@ -7,5 +7,5 @@
   %p Last Choice: Normal
   %p Distance: 0
 
-= button_to 'Normal', '/players/1/select_dice', :method => :put
-= button_to 'Super', '/players/1/select_dice', :method => :put
+= button_to 'Normal', "/players/#{@player.id}/select_dice", :method => :put
+= button_to 'Super', "/players/#{@player.id}/select_dice", :method => :put

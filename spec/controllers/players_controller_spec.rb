@@ -46,8 +46,9 @@ RSpec.describe PlayersController, type: :controller do
 
   describe "PUT #select_dice" do
     it "render show screen" do
-      put :select_dice, params: {id:1}, session: valid_session
-      expect(response).to redirect_to '/players/1/thrown'
+      player = FactoryGirl.create :player
+      put :select_dice, params: {id: player.to_param}, session: valid_session
+      expect(response).to redirect_to "/players/#{player.id}/thrown"
     end
   end
 
