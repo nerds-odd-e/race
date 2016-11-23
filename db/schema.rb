@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122091923) do
+ActiveRecord::Schema.define(version: 20161123022832) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "total",      default: 0
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161122091923) do
     t.datetime "updated_at",                       null: false
     t.integer  "next_dice_number"
     t.boolean  "throw_flag",       default: false
+    t.integer  "steps",            default: 0,     null: false
   end
 
 end
