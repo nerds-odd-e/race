@@ -27,6 +27,14 @@ RSpec.describe Player, type: :model do
     end
   end
 
+  describe '#go_super' do
+    its(:damage) { is_expected.to eq 0 }
+    context 'when go super' do
+      before { subject.go_super 3 }
+      its(:damage) { is_expected.to eq 1 }
+    end
+  end
+
   describe '#update_steps' do
     it 'update result steps to move' do
       player = FactoryGirl.create :player, {steps: 2, damage: 1}

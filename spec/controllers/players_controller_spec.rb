@@ -35,7 +35,6 @@ RSpec.describe PlayersController, type: :controller do
       let(:choice) { 'normal' }
       it { expect{ subject }.to change{player.reload.steps}.to 2 }
     end
-
   end
 
   describe "GET #index" do
