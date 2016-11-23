@@ -7,22 +7,23 @@ RSpec.describe Player, type: :model do
     its(:steps) { is_expected.to eq 0 }
 
     [
-      [1, :go_super, 1],
-      [2, :go_super, 2],
-      [3, :go_super, 3],
-      [4, :go_super, 4],
-      [5, :go_super, 5],
-      [6, :go_super, 6],
-      [1, :go_normal, 1],
-      [2, :go_normal, 2],
-      [3, :go_normal, 1],
-      [4, :go_normal, 2],
-      [5, :go_normal, 1],
-      [6, :go_normal, 2]
-    ].each do |number, method, expected_steps|
+      [1, :go_super, 1, 0],
+      [2, :go_super, 2, 1],
+      [3, :go_super, 3, 2],
+      [4, :go_super, 4, 3],
+      [5, :go_super, 5, 4],
+      [6, :go_super, 6, 5],
+      [1, :go_normal, 1, 0],
+      [2, :go_normal, 2, 1],
+      [3, :go_normal, 1, 0],
+      [4, :go_normal, 2, 1],
+      [5, :go_normal, 1, 0],
+      [6, :go_normal, 2, 1]
+    ].each do |number, method, expected_steps, expected_distance|
       context "when the player #{method} with #{number}" do
         before { subject.send(method, number) }
         its(:steps) { is_expected.to eq expected_steps }
+        its(:distance) { is_expected.to eq expected_distance }
       end
     end
   end
@@ -37,8 +38,8 @@ RSpec.describe Player, type: :model do
 
   describe '#update_steps' do
     it 'update result steps to move' do
-      player = FactoryGirl.create :player, {steps: 2, damage: 1}
-      player.update_steps
+      player = FactoryGirl.create :player, {damage: 1}
+      player.update_steps(2)
       expect(player.steps).to eq 1
     end
   end
