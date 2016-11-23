@@ -17,8 +17,9 @@ class Player < ApplicationRecord
     go_normal(dice_number)
   end
 
-  def damage
-    0
+  def update_steps
+    next_steps = steps - damage
+    update(steps: next_steps > 0 ? next_steps : 0 )
   end
 
   def dice_number

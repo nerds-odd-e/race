@@ -26,4 +26,12 @@ RSpec.describe Player, type: :model do
       end
     end
   end
+
+  describe '#update_steps' do
+    it 'update result steps to move' do
+      player = FactoryGirl.create :player, {steps: 2, damage: 1}
+      player.update_steps
+      expect(player.steps).to eq 1
+    end
+  end
 end

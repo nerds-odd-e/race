@@ -22,12 +22,11 @@ class PlayersController < ApplicationController
   def show
     @thrown = params[:thrown].present?
 
-    dice = Dice.new
     @current_dice_number = @player.next_dice_number
     @player.steps = 0
     if @current_dice_number
-      step_num = dice.calc_normal_step(@current_dice_number)
-      @player.steps = dice.get_step_num(step_num, @player.damage)
+      @player.go_normal(@current_dice_number)
+      @player.update_steps
     end
 
     @player.next_dice_number = Dice.number
