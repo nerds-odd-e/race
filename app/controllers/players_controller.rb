@@ -21,8 +21,6 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @thrown = params[:thrown].present?
-
-    @player.update_steps
   end
 
   # GET /players/new
