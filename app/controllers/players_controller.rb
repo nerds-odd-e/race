@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
       @player.steps = dice.get_step_num(step_num, @player.damage)
     end
 
-    @player.next_dice_number = dice.get_number
+    @player.next_dice_number = Dice.number
     @player.save
   end
 
