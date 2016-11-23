@@ -27,7 +27,7 @@ Feature: Emerson's car racing game
 
     Examples: go super
       | existing damage | choice |dice number| number of steps | updated damage |
-      |  0              | Super  | 3         |  3              | 1              |
+#      |  0              | Super  | 3         |  3              | 1              |
 #      |  0              | Super  | 6         |  6              | 1              |
 #      |  1              | Super  | 3         |  2              | 2              |
 #      |  1              | Super  | 6         |  5              | 2              |
