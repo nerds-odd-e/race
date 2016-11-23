@@ -10,19 +10,4 @@ RSpec.describe Dice, type: :model do
       expect([1, 2, 3, 4, 5, 6]).to include number
     end
   end
-
-  describe 'get_step_num' do
-    it 'step is 2 and damage 1 return 1' do
-      expect(@dice.get_step_num(2,1)).to eq 1
-    end
-
-    it 'step is 5 and damage 1 return 4' do
-      expect(@dice.get_step_num(5, 1)).to eq 4
-    end
-
-    it 'step is 2 and damage 4 return 0' do
-      expect(@dice.get_step_num(2, 4)).to eq 0
-    end
-
-  end
 end
