@@ -22,6 +22,10 @@ class Player < ApplicationRecord
     update(steps: next_steps > 0 ? next_steps : 0 )
   end
 
+  def update_distance
+    update(distance: distance + steps)
+  end
+
   def dice_number
     current_dice_number = next_dice_number || Dice.number
     update(current_dice_number: current_dice_number)

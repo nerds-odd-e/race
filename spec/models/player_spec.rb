@@ -43,6 +43,14 @@ RSpec.describe Player, type: :model do
     end
   end
 
+  describe '#update_distance' do
+    it 'update distance use step and damage' do
+      player = FactoryGirl.create :player, {steps: 1, distance: 0}
+      player.update_distance
+      expect(player.distance).to eq 1
+    end
+  end
+
   describe '#dice_number' do
     it '' do
       player = FactoryGirl.create :player
