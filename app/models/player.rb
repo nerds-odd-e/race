@@ -9,6 +9,10 @@ class Player < ApplicationRecord
     go_super(next_dice_number || Dice.number)
   end
 
+  def go_normal(number)
+    update(steps: 1)
+  end
+
   def damage
     0
   end
