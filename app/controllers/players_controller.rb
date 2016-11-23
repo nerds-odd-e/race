@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy, :select_dice]
 
   def select_dice()
-    @player.go_super(3)
+    @player.go_super(Dice.number)
     redirect_to player_path(@player, thrown: "thrown")
   end
 

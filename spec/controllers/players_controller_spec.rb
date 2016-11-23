@@ -22,10 +22,12 @@ RSpec.describe PlayersController, type: :controller do
 
   describe "PUT #select_dice" do
     let(:player) { FactoryGirl.create :player }
-    subject { put :select_dice, params: {id: player.to_param} }
+    before { allow(Dice).to receive(:number) { 4 } }
+    before { put :select_dice, params: {id: player.to_param} }
+    subject { response }
 
     it { is_expected.to redirect_to player_path(player, thrown: "thrown") }
-    it { subject; expect(player.reload.steps).not_to eq 0}
+    it { expect(player.reload.steps).to eq 4 }
   end
 
   describe "GET #index" do
