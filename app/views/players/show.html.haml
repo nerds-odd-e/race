@@ -12,5 +12,5 @@
   %p
     Damage: #{@player.damage}
 
-= button_to 'Normal', select_dice_player_path(@player), :method => :put
-= button_to 'Super', select_dice_player_path(@player), :method => :put
+= button_to 'Normal', select_dice_player_path(@player, choice: 'normal'), :method => :put
+= button_to 'Super', select_dice_player_path(@player, choice: 'super'), :method => :put

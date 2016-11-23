@@ -2,7 +2,12 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy, :select_dice]
 
   def select_dice()
-    @player.go_random_super
+    if params[:choice] == 'normal'
+      @player.go_random_normal
+    else
+      @player.go_random_super
+    end
+
     redirect_to player_path(@player, thrown: "thrown")
   end
 

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PlayersController, type: :controller do
+  let(:player) { FactoryGirl.create :player }
 
   let(:valid_attributes) {
     {
@@ -21,13 +22,20 @@ RSpec.describe PlayersController, type: :controller do
   let(:valid_session) { {} }
 
   describe "PUT #select_dice" do
-    let(:player) { FactoryGirl.create :player }
     before { allow(Dice).to receive(:number) { 4 } }
-    before { put :select_dice, params: {id: player.to_param} }
-    subject { response }
+    subject { put :select_dice, params: {id: player.to_param, choice: choice} }
 
-    it { is_expected.to redirect_to player_path(player, thrown: "thrown") }
-    it { expect(player.reload.steps).to eq 4 }
+    context 'go super' do
+      let(:choice) { 'super' }
+      it { is_expected.to redirect_to player_path(player, thrown: "thrown") }
+      it { expect{ subject }.to change{player.reload.steps}.to 4 }
+    end
+
+    context 'go normal' do
+      let(:choice) { 'normal' }
+      it { expect{ subject }.to change{player.reload.steps}.to 2 }
+    end
+
   end
 
   describe "GET #index" do
