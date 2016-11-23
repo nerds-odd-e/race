@@ -12,5 +12,5 @@
   %p
     Damage: #{@player.damage}
 
-= button_to 'Normal', "/players/#{@player.id}/select_dice", :method => :put
-= button_to 'Super', "/players/#{@player.id}/select_dice", :method => :put
+= button_to 'Normal', select_dice_player_path(@player), :method => :put
+= button_to 'Super', select_dice_player_path(@player), :method => :put
