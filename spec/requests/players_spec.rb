@@ -8,7 +8,8 @@ RSpec.describe "Players", type: :request do
     end
 
     it "shows select dice view" do
-      put "/players/1/select_dice"
+      player = FactoryGirl.create :player
+      put "/players/#{player.id}/select_dice"
       expect(response).to have_http_status(302)
     end
   end

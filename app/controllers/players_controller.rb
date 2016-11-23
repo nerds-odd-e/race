@@ -1,9 +1,8 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy, :select_dice]
 
   def select_dice()
-    # TODO idを変化させる
-    redirect_to "/players/1/thrown"
+    redirect_to "/players/#{@player.id}/thrown"
   end
 
   # GET /players
@@ -17,6 +16,15 @@ class PlayersController < ApplicationController
   def show
     if params[:thrown].present?
       @thrown = true
+    end
+
+    dice = Dice.new
+    dice_number = @player.next_dice_number
+    if dice_number
+      step_num = dice.calc_normal_step(dice_number)
+      @step = dice.get_step_num(step_num, @player.damage)
+    else
+      @step = 0
     end
   end
 

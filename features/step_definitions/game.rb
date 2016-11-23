@@ -24,7 +24,7 @@ When(/^The player goes (\w+) and the dice show (\d+)$/) do |choice, next_dice_nu
 end
 
 Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, updated_damage|
-  page.should have_content(number_of_steps)
+  page.should have_content("Step: #{number_of_steps}")
   expect(updated_damage.to_i).to eq @current_player.damage
 end
 
