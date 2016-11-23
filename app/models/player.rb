@@ -23,6 +23,8 @@ class Player < ApplicationRecord
   end
 
   def dice_number
-    next_dice_number || Dice.number
+    current_dice_number = next_dice_number || Dice.number
+    update(current_dice_number: current_dice_number)
+    current_dice_number
   end
 end

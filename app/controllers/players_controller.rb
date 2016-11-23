@@ -7,6 +7,7 @@ class PlayersController < ApplicationController
     else
       @player.go_random_super
     end
+    @current_dice_number = @player.next_dice_number
 
     redirect_to player_path(@player, thrown: "thrown")
   end
@@ -22,15 +23,7 @@ class PlayersController < ApplicationController
   def show
     @thrown = params[:thrown].present?
 
-    @current_dice_number = @player.next_dice_number
-    @player.steps = 0
-    if @current_dice_number
-      @player.go_normal(@current_dice_number)
-      @player.update_steps
-    end
-
-    @player.next_dice_number = Dice.number
-    @player.save
+    @player.update_steps
   end
 
   # GET /players/new
