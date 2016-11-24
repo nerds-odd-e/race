@@ -12,7 +12,7 @@ class Player < ApplicationRecord
 
   def go_normal(number)
     self.steps = (number.odd? ? 1 : 2) - damage
-    self.distance = steps
+    self.distance += steps
   end
 
   def go_random_normal
