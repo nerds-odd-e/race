@@ -7,20 +7,21 @@ RSpec.describe Player, type: :model do
     its(:steps) { is_expected.to eq 0 }
 
     [
-      [1, :go_super, 1, 0],
-      [2, :go_super, 2, 0],
-      [3, :go_super, 3, 0],
-      [4, :go_super, 4, 0],
-      [5, :go_super, 5, 0],
-      [6, :go_super, 6, 0],
-      [1, :go_normal, 1, 0],
-      [2, :go_normal, 2, 0],
-      [3, :go_normal, 1, 0],
-      [4, :go_normal, 2, 0],
-      [5, :go_normal, 1, 0],
-      [6, :go_normal, 2, 0],
-      [2, :go_normal, 1, 1]
-    ].each do |number, method, expected_steps, existing_damage|
+      [1, :go_super,  0, 1],
+      [2, :go_super,  0, 2],
+      [3, :go_super,  0, 3],
+      [4, :go_super,  0, 4],
+      [5, :go_super,  0, 5],
+      [6, :go_super,  0, 6],
+      [1, :go_normal, 0, 1],
+      [2, :go_normal, 0, 2],
+      [3, :go_normal, 0, 1],
+      [4, :go_normal, 0, 2],
+      [5, :go_normal, 0, 1],
+      [6, :go_normal, 0, 2],
+      [2, :go_normal, 1, 1],
+      #[2, :go_normal, 3, 0],
+    ].each do |number, method, existing_damage, expected_steps|
       context "when the player #{method} with #{number} and #{existing_damage} damages" do
         before {
            subject.damage = existing_damage

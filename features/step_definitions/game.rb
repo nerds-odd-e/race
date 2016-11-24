@@ -25,7 +25,7 @@ end
 
 Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, updated_damage|
   page.should have_selector '.steps', text: number_of_steps
-  page.should have_selector '.dice', text: @current_player.next_dice_number
+  page.should have_selector '.dice', text: @current_player.current_dice_number
   page.should have_selector '.damage', text: updated_damage
 end
 
