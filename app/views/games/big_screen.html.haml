@@ -7,3 +7,7 @@
     = @game.moved_player_count
 
 = button_to 'Next', '/big_screen', :method => :get
+
+- Player.count.times do |i|
+  %p{ class: "player_#{i}" }
+    ■

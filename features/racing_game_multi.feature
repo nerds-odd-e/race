@@ -17,3 +17,14 @@ Feature: multi player game
       | 5            | 0              | 0           | 0             |
       | 2            | 0              | 1           | 0             |
       | 3            | 2              | 1           | 2             |
+
+  @developing
+  Scenario Outline: All player's cars are shown in big screen
+    Given join <join players> players
+    When  View the big screen
+    Then  All player's cars are shown in big screen
+
+    Examples: shown in big screen
+      | join players |
+      | 1            |
+      | 2            |
