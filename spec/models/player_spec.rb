@@ -1,34 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe Player, type: :model do
+  subject { FactoryGirl.create :player }
   describe "#steps" do
-    subject { FactoryGirl.create :player }
 
     its(:steps) { is_expected.to eq 0 }
 
     [
-      [1, :go_super, 1, 1, 0],
-      [2, :go_super, 2, 2, 0],
-      [3, :go_super, 3, 3, 0],
-      [4, :go_super, 4, 4, 0],
-      [5, :go_super, 5, 5, 0],
-      [6, :go_super, 6, 6, 0],
-      [1, :go_normal, 1, 1, 0],
-      [2, :go_normal, 2, 2, 0],
-      [3, :go_normal, 1, 1, 0],
-      [4, :go_normal, 2, 2, 0],
-      [5, :go_normal, 1, 1, 0],
-      [6, :go_normal, 2, 2, 0],
-      [2, :go_normal, 1, 1, 1]
-    ].each do |number, method, expected_steps, expected_distance, existing_damage|
+      [1, :go_super, 1, 0],
+      [2, :go_super, 2, 0],
+      [3, :go_super, 3, 0],
+      [4, :go_super, 4, 0],
+      [5, :go_super, 5, 0],
+      [6, :go_super, 6, 0],
+      [1, :go_normal, 1, 0],
+      [2, :go_normal, 2, 0],
+      [3, :go_normal, 1, 0],
+      [4, :go_normal, 2, 0],
+      [5, :go_normal, 1, 0],
+      [6, :go_normal, 2, 0],
+      [2, :go_normal, 1, 1]
+    ].each do |number, method, expected_steps, existing_damage|
       context "when the player #{method} with #{number} and #{existing_damage} damages" do
         before {
            subject.damage = existing_damage
            subject.send(method, number)
          }
         its(:steps) { is_expected.to eq expected_steps }
-        its(:distance) { is_expected.to eq expected_distance }
       end
+    end
+  end
+
+  describe '#distance' do
+    context 'existing distance = 10' do
+      before { subject.distance = 10 }
+      it { expect {subject.go_normal(2)}.to change{subject.distance}.from(10).to(12)}
     end
   end
 
