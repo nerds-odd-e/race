@@ -34,6 +34,15 @@ RSpec.describe Player, type: :model do
       before { subject.go_super 3 }
       its(:damage) { is_expected.to eq 1 }
     end
+
+    context 'when go super with damage' do
+      it '' do
+        player = subject
+        player.damage = 2
+        player.go_super 3
+        expect(player.steps).to eq 1
+      end
+    end
   end
 
   describe '#dice_number' do

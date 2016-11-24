@@ -3,7 +3,8 @@ class Player < ApplicationRecord
 
   def go_super(number)
     update(distance: number - 1)
-    update(steps: number, damage: damage + 1)
+
+    update(steps: number - damage, damage: damage + 1)
   end
 
   def go_random_super

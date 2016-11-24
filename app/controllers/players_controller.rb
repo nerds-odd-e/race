@@ -25,12 +25,10 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
 
-    respond_to do |format|
-      if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @player.save
+      redirect_to @player, notice: 'Player was successfully created.' 
+    else
+      render :new 
     end
   end
 
