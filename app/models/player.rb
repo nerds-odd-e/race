@@ -2,7 +2,7 @@ class Player < ApplicationRecord
   validates :distance, presence: true
 
   def go_super(number)
-    update(distance: number - 1)
+    update(distance: number)
     update(steps: number, damage: damage + 1)
   end
 
@@ -11,8 +11,10 @@ class Player < ApplicationRecord
   end
 
   def go_normal(number)
-    update(steps: number.odd? ? 1 : 2)
-    update(distance: steps - 1)
+    steps = number.odd? ? 1 : 2
+    steps = steps - damage
+    update(steps: steps)
+    update(distance: steps)
   end
 
   def go_random_normal
