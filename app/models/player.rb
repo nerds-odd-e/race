@@ -2,10 +2,8 @@ class Player < ApplicationRecord
   validates :distance, presence: true
 
   def go_super(number)
-    self.steps = [number - damage, 0].max
+    go(number)
     self.damage += 1
-    self.distance += steps
-    self.current_dice_number = number
   end
 
   def go_random_super
@@ -13,9 +11,7 @@ class Player < ApplicationRecord
   end
 
   def go_normal(number)
-    self.steps = (number.odd? ? 1 : 2) - damage
-    self.distance += steps
-    self.current_dice_number = number
+    go(number.odd? ? 1 : 2)
   end
 
   def go_random_normal
@@ -25,4 +21,13 @@ class Player < ApplicationRecord
   def dice_number
     next_dice_number || Dice.number
   end
+
+  private
+
+  def go(number)
+    self.steps = [number - damage, 0].max
+    self.distance += steps
+    self.current_dice_number = number
+  end
+
 end
