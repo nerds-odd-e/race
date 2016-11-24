@@ -29,6 +29,6 @@ Feature: Emerson's car racing game
       |  0              | Super  | 3         |  3              | 1              |
       |  0              | Super  | 6         |  6              | 1              |
       |  1              | Super  | 3         |  2              | 2              |
-#      |  1              | Super  | 6         |  5              | 2              |
-#      |  3              | Super  | 3         |  0              | 4              |
+      |  1              | Super  | 6         |  5              | 2              |
+      |  3              | Super  | 3         |  0              | 4              |
 #      |  7              | Super  | 6         |  0              | 8              |
