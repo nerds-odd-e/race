@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  def check_move_flag(total, thrown_players)
+  def is_move_next?(total, thrown_players)
     if self.total < Player.count
       return true
     end

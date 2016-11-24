@@ -55,7 +55,7 @@ When(/^Admin press next button$/) do
 end
 
 Then(/^Moved players number is (\d+)$/) do |moved_players|
-  page.should have_content("moved #{moved_players}")
+  page.should have_selector '.moved', text: moved_players
 end
 
 When(/^The player goes normal and the dice show$/) do

@@ -10,8 +10,8 @@ Feature: multi player game
 
     Examples: go normal
       | join players | thrown players | new players | moved players |
-      | 2            | 2              | 0           | 0             |
-#      | 3            | 2              | 0           | 2             |
+#      | 2            | 2              | 0           | 0             |
+      | 3            | 2              | 0           | 2             |
 #      | 5          | 0              | 0           | 0             |
 #      | 2          | 0              | 1           | 0             |
 #      | 3          | 2            | 1           | 0             |

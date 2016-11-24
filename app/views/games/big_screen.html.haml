@@ -1,6 +1,9 @@
 %h1 Big screen
 
-total 200
-moved 0
+%p
+  total 200
+  moved:
+  %span.moved
+    = @moved
 
 = button_to 'Next', '/big_screen', :method => :get
