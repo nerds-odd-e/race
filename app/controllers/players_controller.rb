@@ -9,6 +9,7 @@ class PlayersController < ApplicationController
     else
       @player.go_random_super
     end
+
     @player.save
 
     redirect_to player_path(@player, thrown: "thrown")

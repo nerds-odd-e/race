@@ -40,6 +40,7 @@ RSpec.describe Player, type: :model do
 
   describe '#go_super' do
     its(:damage) { is_expected.to eq 0 }
+
     context 'when go super' do
       before { subject.go_super 3 }
       its(:damage) { is_expected.to eq 1 }
