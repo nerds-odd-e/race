@@ -1,21 +1,22 @@
-- if @thrown
-  %p
-    Dice:
-    %span.dice
-      = @player.current_dice_number
-  %p
-    Step:
-    %span.steps
-      = @player.steps
-  %p Last Choice: Normal
-  %p 
-    Distance:
-    %span.distance
-      = @player.distance
-  %p
-    Damage:
-    %span.damage
-      = @player.damage
+%div.player(style='padding-left: #{@player.distance * 10}px;')
+  - if @thrown
+    %p
+      Dice:
+      %span.dice
+        = @player.current_dice_number
+    %p
+      Step:
+      %span.steps
+        = @player.steps
+    %p Last Choice: Normal
+    %p 
+      Distance:
+      %span.distance
+        = @player.distance
+    %p
+      Damage:
+      %span.damage
+        = @player.damage
 
 %div.buttons
   = button_to 'Normal', select_dice_player_path(@player, choice: 'normal'), :method => :put

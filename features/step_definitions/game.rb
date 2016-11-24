@@ -57,3 +57,11 @@ end
 Then(/^Moved players number is (\d+)$/) do |moved_players|
   page.should have_content("moved #{moved_players}")
 end
+
+When(/^The player goes normal and the dice show$/) do
+  click_on 'Normal'
+end
+
+Then(/^The car move to right player distance$/) do
+  page.find('.player')['style'].should == "padding-left: #{Player.last.distance * 10}px;"
+end

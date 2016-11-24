@@ -33,3 +33,9 @@ Feature: Emerson's car racing game
       |  1              | Super  | 6         |  5              | 2              | 5        | 
       |  3              | Super  | 3         |  0              | 4              | 0        | 
       |  7              | Super  | 6         |  0              | 8              | 0        | 
+
+  Scenario: check move player
+    Given There is a new game
+    And   The player join the game
+    When  The player goes normal and the dice show
+    Then  The car move to right player distance
