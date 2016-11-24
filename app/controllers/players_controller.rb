@@ -1,8 +1,10 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :select_dice]
 
+  NORMAL = 'normal'
+
   def select_dice
-    if params[:choice] == 'normal'
+    if params[:choice] == NORMAL
       @player.go_random_normal
     else
       @player.go_random_super
@@ -34,13 +36,11 @@ class PlayersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_player
       @player = Player.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-        {}
+      {}
     end
 end
