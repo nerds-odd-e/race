@@ -82,14 +82,14 @@ RSpec.describe Player, type: :model do
   end
 
   describe "#choice" do
-    context "go normal" do
-      before { subject.go_normal(3) }
-      its(:choice) { is_expected.to eq "Normal" }
-    end
-
-    context "go super" do
-      before { subject.go_super(3) }
-      its(:choice) { is_expected.to eq "Super" }
+    [
+      [:go_normal, 'Normal'],
+      [:go_super,  'Super'],
+    ].each do |method, choice|
+      context "check choice after go_normal and go_super" do
+        before { subject.send(method, 3) }
+        its(:choice) { is_expected.to eq choice }
+      end
     end
   end
 end
