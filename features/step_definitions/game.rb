@@ -29,6 +29,10 @@ Then(/^The car move (\d+) steps and has (\d+) damage$/) do |number_of_steps, upd
   page.should have_selector '.damage', text: updated_damage
 end
 
+Then(/^The car distance display (\d+)$/) do |distance|
+  page.should have_selector '.distance', text: distance
+end
+
 Given(/^join (\d+) players$/) do |join_players|
   join_players.to_i.times do
     visit new_player_url

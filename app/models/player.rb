@@ -2,9 +2,9 @@ class Player < ApplicationRecord
   validates :distance, presence: true
 
   def go_super(number)
-    self.distance = number
     self.steps = [number - damage, 0].max
     self.damage += 1
+    self.distance += steps
     self.current_dice_number = number
   end
 

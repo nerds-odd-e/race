@@ -32,9 +32,12 @@ RSpec.describe Player, type: :model do
   end
 
   describe '#distance' do
+    before { subject.distance = 10 }
     context 'existing distance = 10' do
-      before { subject.distance = 10 }
       it { expect {subject.go_normal(2)}.to change{subject.distance}.from(10).to(12)}
+    end
+    context 'super existing distance = 10' do
+      it { expect {subject.go_super(4)}.to change{subject.distance}.from(10).to(14)}
     end
   end
 
