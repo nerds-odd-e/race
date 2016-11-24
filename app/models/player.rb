@@ -5,6 +5,7 @@ class Player < ApplicationRecord
     self.distance = number
     self.steps = number - damage
     self.damage += 1
+    self.current_dice_number = number
   end
 
   def go_random_super
@@ -14,6 +15,7 @@ class Player < ApplicationRecord
   def go_normal(number)
     self.steps = (number.odd? ? 1 : 2) - damage
     self.distance += steps
+    self.current_dice_number = number
   end
 
   def go_random_normal
@@ -21,8 +23,6 @@ class Player < ApplicationRecord
   end
 
   def dice_number
-    current_dice_number = next_dice_number || Dice.number
-    update(current_dice_number: current_dice_number)
-    current_dice_number
+    next_dice_number || Dice.number
   end
 end
