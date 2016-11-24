@@ -33,19 +33,18 @@ RSpec.describe Player, type: :model do
   end
 
   describe '#distance' do
-    before { subject.distance = 10 }
-
-    context 'existing distance = 10' do
-      it { expect {subject.go_normal(2)}.to change{subject.distance}.to(12)}
-
-      context 'when there is 1 damage' do
-        before { subject.damage = 1 }
-        it { expect {subject.go_normal(2)}.to change{subject.distance}.to(11)}
+    [
+      [10, 0,:go_normal, 2, 12],
+      [10, 1,:go_normal, 2, 11],
+      [10, 0,:go_super, 4, 14],
+    ].each do |current_distance, damage, method, dice, result_distance|
+      context '' do
+        before { 
+          subject.distance = current_distance
+          subject.damage = damage
+        }
+        it { expect{subject.send(method, dice)}.to change{subject.distance}.to(result_distance) }
       end
-    end
-
-    context 'super existing distance = 10' do
-      it { expect {subject.go_super(4)}.to change{subject.distance}.from(10).to(14)}
     end
   end
 
