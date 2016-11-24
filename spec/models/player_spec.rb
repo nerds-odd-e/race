@@ -47,11 +47,21 @@ RSpec.describe Player, type: :model do
     end
 
     context 'when go super with damage' do
-      before do
-        subject.damage = 2
-        subject.go_super 3
+      context 'damage few' do
+        before do
+          subject.damage = 2
+          subject.go_super 3
+        end
+        its(:steps) { is_expected.to eq 1 }
       end
-      its(:steps) { is_expected.to eq 1 }
+
+      context 'damage big' do
+        before do
+          subject.damage = 10
+          subject.go_super 3
+        end
+        its(:steps) { is_expected.to eq 0 }
+      end
     end
   end
 

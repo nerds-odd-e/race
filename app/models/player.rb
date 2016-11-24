@@ -3,7 +3,7 @@ class Player < ApplicationRecord
 
   def go_super(number)
     self.distance = number
-    self.steps = number - damage
+    self.steps = [number - damage, 0].max
     self.damage += 1
   end
 
