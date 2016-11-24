@@ -56,11 +56,4 @@ RSpec.describe PlayersController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
-    before { player }
-    subject { delete :destroy, params: {id: player.to_param}}
-    it { expect { subject }.to change(Player, :count).by(-1) }
-    it { is_expected.to redirect_to(players_url) }
-  end
-
 end

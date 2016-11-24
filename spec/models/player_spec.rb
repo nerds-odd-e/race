@@ -23,7 +23,7 @@ RSpec.describe Player, type: :model do
       context "when the player #{method} with #{number}" do
         before { subject.send(method, number) }
         its(:steps) { is_expected.to eq expected_steps }
-        its(:distance) { is_expected.to eq expected_distance}
+        its(:distance) { is_expected.to eq expected_distance }
       end
     end
   end
