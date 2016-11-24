@@ -80,4 +80,16 @@ RSpec.describe Player, type: :model do
       end
     end
   end
+
+  describe "#choice" do
+    context "go normal" do
+      before { subject.go_normal(3) }
+      its(:choice) { is_expected.to eq "Normal" }
+    end
+
+    context "go super" do
+      before { subject.go_super(3) }
+      its(:choice) { is_expected.to eq "Super" }
+    end
+  end
 end

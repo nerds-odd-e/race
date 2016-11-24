@@ -15,6 +15,7 @@ RSpec.describe PlayersController, type: :controller do
 
     context 'go normal' do
       let(:choice) { 'normal' }
+      it { is_expected.to redirect_to player_path(player, thrown: "thrown") }
       it { expect{ subject }.to change{player.reload.steps}.to 2 }
     end
   end
@@ -55,5 +56,4 @@ RSpec.describe PlayersController, type: :controller do
       expect(assigns(:player)).to be_persisted
     end
   end
-
 end

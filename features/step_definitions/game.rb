@@ -65,3 +65,7 @@ end
 Then(/^The car move to right player distance$/) do
   page.find('.player')['style'].should == "padding-left: #{Player.last.distance * 10}px;"
 end
+
+Then(/^The player's choice\((\w+)\) is shown on player view$/) do |choice|
+  page.should have_selector '.choice', text: choice
+end

@@ -11,6 +11,7 @@ Feature: Emerson's car racing game
     When  The player goes <choice> and the dice show <dice number>
     Then  The car move <number of steps> steps and has <updated damage> damage
     Then  The car distance display <distance>
+    Then  The player's choice(<choice>) is shown on player view
 
     Examples: go normal
       | existing damage | choice |dice number| number of steps | updated damage |distance |
