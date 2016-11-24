@@ -26,7 +26,7 @@ class Player < ApplicationRecord
 
   def go(number)
     self.steps = [number - damage, 0].max
-    self.distance += number
+    self.distance += steps
     self.current_dice_number = number
   end
 

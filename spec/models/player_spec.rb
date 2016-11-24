@@ -20,7 +20,7 @@ RSpec.describe Player, type: :model do
       [5, :go_normal, 0, 1],
       [6, :go_normal, 0, 2],
       [2, :go_normal, 1, 1],
-      #[2, :go_normal, 3, 0],
+      [2, :go_normal, 3, 0],
     ].each do |number, method, existing_damage, expected_steps|
       context "when the player #{method} with #{number} and #{existing_damage} damages" do
         before {
@@ -35,7 +35,12 @@ RSpec.describe Player, type: :model do
   describe '#distance' do
     context 'existing distance = 10' do
       before { subject.distance = 10 }
-      it { expect {subject.go_normal(2)}.to change{subject.distance}.from(10).to(12)}
+      it { expect {subject.go_normal(2)}.to change{subject.distance}.to(12)}
+
+      context 'when there is 1 damage' do
+        before { subject.damage = 1 }
+        it { expect {subject.go_normal(2)}.to change{subject.distance}.to(11)}
+      end
     end
   end
 
@@ -49,12 +54,12 @@ RSpec.describe Player, type: :model do
 
     describe '#go_super' do
       its(:damage) { is_expected.to eq 0 }
-  
+
       context 'when go super' do
         before { subject.go_super 3 }
         its(:damage) { is_expected.to eq 1 }
       end
-  
+
       context 'when go super with damage' do
         [
           [2, 3, 1],
