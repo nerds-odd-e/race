@@ -89,6 +89,7 @@ RSpec.describe Player, type: :model do
       context "check choice after go_normal and go_super" do
         before { subject.send(method, 3) }
         its(:choice) { is_expected.to eq choice }
+        it { is_expected.to be_throw_flag }
       end
     end
   end

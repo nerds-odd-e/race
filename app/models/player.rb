@@ -1,6 +1,8 @@
 class Player < ApplicationRecord
   validates :distance, presence: true
 
+  scope :thrown, -> { where(throw_flag: true) }
+
   def go_super(number)
     go(number)
     self.damage += 1
@@ -30,6 +32,7 @@ class Player < ApplicationRecord
     self.steps = [number - damage, 0].max
     self.distance += steps
     self.current_dice_number = number
+    self.throw_flag = true
   end
 
 end

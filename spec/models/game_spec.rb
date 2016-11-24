@@ -1,26 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-#  describe 'is_move_next' do
-#    before do
-#      @game = Game.new
-#      @game.total = 2
-#    end
-#    subject { Game.new total: 2 }
-#    it 'total 2 and thrown_players 2' do
-#      check_flag = subject.is_move_next?(2) 
-#      expect(check_flag).to be_truthy
-#    end
-#
-#    it 'total 2 and thrown_players 1' do
-#      check_flag = subject { @game.is_move_next?(1) }
-#      expect(check_flag).to be_falsey
-#    end
-#
-#    it 'return true becase has new player' do
-#      FactoryGirl.create_list(:player, 3)
-#      check_flag = subject { @game.is_move_next?(0) }
-#      expect(check_flag).to be_truthy
-#    end
-#  end
+  subject { Game.new }
+  describe '#moved_player_count' do
+    context 'There are 2 players' do
+      before { FactoryGirl.create_list(:player, 2) }
+      its(:moved_player_count) { is_expected.to eq 0 }
+      context 'moved one player' do
+        before { Player.last.update(throw_flag: true) }
+        its(:moved_player_count) { is_expected.to eq 1 }
+      end
+    end
+  end
+
 end

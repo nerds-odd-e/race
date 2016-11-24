@@ -42,7 +42,10 @@ Given(/^join (\d+) players$/) do |join_players|
 end
 
 Given(/^thrown (\d+) players$/) do |thrown_players|
-  Player.limit(thrown_players).update_all(throw_flag: true)
+  Player.limit(thrown_players).each do |player|
+    visit player_url(player)
+    click_on "Normal"
+  end
 end
 
 Given(/^new (\d+) players$/) do |new_players|
@@ -55,6 +58,7 @@ When(/^Admin press next button$/) do
 end
 
 Then(/^Moved players number is (\d+)$/) do |moved_players|
+  visit '/big_screen'
   page.should have_selector '.moved', text: moved_players
 end
 

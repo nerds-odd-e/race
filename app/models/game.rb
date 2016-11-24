@@ -5,4 +5,8 @@ class Game < ApplicationRecord
     end
     total == thrown_players
   end
+
+  def moved_player_count
+    Player.thrown.count
+  end
 end
