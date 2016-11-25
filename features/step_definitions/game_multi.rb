@@ -10,7 +10,7 @@ Then(/^All player's cars are shown in big screen$/) do
   end
 end
 
-Given(/^There are (\d+) players in the game$/) do |arg1|
+Given(/^There are 2 players in the game$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
@@ -54,10 +54,10 @@ Then(/^the player's car is not moved$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^there's a message saying "([^"]*)"$/) do |arg1|
+Then(/^there's a message saying "already moved"$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When(/^the admin clicks "([^"]*)"$/) do |arg1|
+When(/^the admin clicks "next"$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
