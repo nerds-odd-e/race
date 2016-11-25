@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
       redirect_to player_path(@player, thrown: 'thrown', message: 'please wait')
       return
     end
-    go_random
+    @player.go_random(params[:choice])
     @player.save
     redirect_to player_path(@player, thrown: 'thrown')
   end
@@ -45,13 +45,5 @@ class PlayersController < ApplicationController
 
   def player_params
     {}
-  end
-
-  def go_random
-    if params[:choice] == NORMAL
-      @player.go_random_normal
-    else
-      @player.go_random_super
-    end
   end
 end

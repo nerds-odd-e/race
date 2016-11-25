@@ -5,23 +5,23 @@ class Player < ApplicationRecord
   scope :thrown, -> { where(throw_flag: true) }
   scope :refresh_thrown, -> { update_all(throw_flag: false) }
 
+  def go_random(choice)
+    if choice == 'normal'
+      go_normal(dice_number)
+    else
+      go_super(dice_number)
+    end
+  end
+
   def go_super(number)
     go(number, number)
     self.damage += 1
     self.choice = 'Super'
   end
 
-  def go_random_super
-    go_super(dice_number)
-  end
-
   def go_normal(number)
     go(number, number.odd? ? 1 : 2)
     self.choice = 'Normal'
-  end
-
-  def go_random_normal
-    go_normal(dice_number)
   end
 
   def dice_number
