@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :select_dice]
 
@@ -12,7 +13,7 @@ class PlayersController < ApplicationController
 
     @player.save
 
-    redirect_to player_path(@player, thrown: "thrown")
+    redirect_to player_path(@player, thrown: 'thrown')
   end
 
   # GET /players/1
@@ -30,18 +31,19 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      redirect_to @player, notice: 'Player was successfully created.' 
+      redirect_to @player, notice: 'Player was successfully created.'
     else
-      render :new 
+      render :new
     end
   end
 
   private
-    def set_player
-      @player = Player.find(params[:id])
-    end
 
-    def player_params
-      {}
-    end
+  def set_player
+    @player = Player.find(params[:id])
+  end
+
+  def player_params
+    {}
+  end
 end

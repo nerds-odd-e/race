@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Player < ApplicationRecord
   validates :distance, presence: true
 
@@ -6,7 +7,7 @@ class Player < ApplicationRecord
   def go_super(number)
     go(number, number)
     self.damage += 1
-    self.choice = "Super"
+    self.choice = 'Super'
   end
 
   def go_random_super
@@ -15,7 +16,7 @@ class Player < ApplicationRecord
 
   def go_normal(number)
     go(number, number.odd? ? 1 : 2)
-    self.choice = "Normal"
+    self.choice = 'Normal'
   end
 
   def go_random_normal
@@ -34,5 +35,4 @@ class Player < ApplicationRecord
     self.current_dice_number = number
     self.throw_flag = true
   end
-
 end

@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 Given(/^There is a new game$/) do
 end
 
 Given(/^The player join the game$/) do
   visit new_player_url
-  click_on "参加"
+  click_on '参加'
 end
 
 Given(/^View has no dice result$/) do
@@ -36,15 +37,15 @@ end
 Given(/^join (\d+) players$/) do |join_players|
   join_players.to_i.times do
     visit new_player_url
-    click_on "参加"
+    click_on '参加'
   end
-  FactoryGirl.create(:game, {total: join_players})
+  FactoryGirl.create(:game, total: join_players)
 end
 
 Given(/^thrown (\d+) players$/) do |thrown_players|
   Player.limit(thrown_players).each do |player|
     visit player_url(player)
-    click_on "Normal"
+    click_on 'Normal'
   end
 end
 
