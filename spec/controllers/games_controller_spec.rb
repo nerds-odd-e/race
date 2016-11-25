@@ -19,7 +19,7 @@ RSpec.describe GamesController, type: :controller do
   end
 
   describe '#next' do
-    subject{ post :next }
+    subject { post :next }
     it { is_expected.to redirect_to 'big_screen' }
   end
 end

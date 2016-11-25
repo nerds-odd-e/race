@@ -5,6 +5,6 @@ class GamesController < ApplicationController
   end
 
   def next
-   redirect_to 'big_screen'
+    redirect_to 'big_screen'
   end
 end
