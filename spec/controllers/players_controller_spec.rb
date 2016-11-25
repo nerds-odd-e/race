@@ -25,12 +25,12 @@ RSpec.describe PlayersController, type: :controller do
     subject { get :show, params: { id: player.to_param } }
     it 'assigns the requested player as @player' do
       subject
-      expect(assigns(:player)).to eq(player)
+      expect(assigns(:player).object).to eq(player)
     end
 
     it 'assigns the requested player as @player when thrown' do
       subject
-      expect(assigns(:player)).to eq(player)
+      expect(assigns(:player).object).to eq(player)
     end
 
     it 'after shown second views' do

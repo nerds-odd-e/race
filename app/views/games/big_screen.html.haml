@@ -11,7 +11,7 @@
 
 = button_to 'Next', '/next', :method => :post
 
-- Player.all.each do |player|
+- @players.each do |player|
   %p
-    = car_image(player)
+    = player.car_image
 
