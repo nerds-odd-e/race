@@ -4,7 +4,7 @@ class Player < ApplicationRecord
   scope :thrown, -> { where(throw_flag: true) }
 
   def go_super(number)
-    go(number)
+    go(number, number)
     self.damage += 1
     self.choice = "Super"
   end
@@ -14,7 +14,7 @@ class Player < ApplicationRecord
   end
 
   def go_normal(number)
-    go(number.odd? ? 1 : 2)
+    go(number, number.odd? ? 1 : 2)
     self.choice = "Normal"
   end
 
@@ -28,8 +28,8 @@ class Player < ApplicationRecord
 
   private
 
-  def go(number)
-    self.steps = [number - damage, 0].max
+  def go(number, step)
+    self.steps = [step - damage, 0].max
     self.distance += steps
     self.current_dice_number = number
     self.throw_flag = true

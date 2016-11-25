@@ -39,11 +39,22 @@ RSpec.describe Player, type: :model do
       [10, 0,:go_super, 4, 14],
     ].each do |current_distance, damage, method, dice, result_distance|
       context '' do
-        before { 
+        before {
           subject.distance = current_distance
           subject.damage = damage
         }
         it { expect{subject.send(method, dice)}.to change{subject.distance}.to(result_distance) }
+      end
+    end
+  end
+
+  describe '#current_dice_number' do
+    [
+      [:go_normal, 1],
+      [:go_normal, 3],
+    ].each do |method, dice|
+      context 'check current_dice_number' do
+        it { expect{subject.send(method, dice)}.to change{subject.current_dice_number}.to(dice) }
       end
     end
   end
