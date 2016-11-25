@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
+  post "/next", to: "games#next"
   get "/big_screen", to: "games#big_screen"
 
   resources :players do
