@@ -19,7 +19,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @thrown = params[:thrown].present?
-    @player = ::GamesHelper::PlayerDecorator.new(@player, view_context())
+    @player = ::GamesHelper::PlayerDecorator.new(@player, view_context)
   end
 
   # GET /players/new

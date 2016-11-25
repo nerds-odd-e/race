@@ -5,7 +5,8 @@ module GamesHelper
   end
 
   class PlayerDecorator
-    delegate :id, :damage, :current_dice_number, :steps, :choice, :distance, to: :object
+    delegate :id, :damage, :current_dice_number, :steps, :choice, :distance,
+             to: :object
     attr_accessor :object
 
     def initialize(player, context)
