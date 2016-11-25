@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
   def big_screen
-    @game = Game.last
- end
+    @game = Game.start
+  end
 end

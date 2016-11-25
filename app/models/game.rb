@@ -9,4 +9,8 @@ class Game < ApplicationRecord
   def moved_player_count
     Player.thrown.count
   end
+
+  def self.start
+    Game.last || Game.create
+  end
 end

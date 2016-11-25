@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  subject { Game.new }
+  subject { Game.start }
   describe '#moved_player_count' do
     context 'There are 2 players' do
       before { FactoryGirl.create_list(:player, 2) }
@@ -13,4 +13,9 @@ RSpec.describe Game, type: :model do
     end
   end
 
+  describe '#start' do
+    it 'get game data' do
+      expect(Game.start).to eq Game.last
+    end
+  end
 end
