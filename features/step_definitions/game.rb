@@ -62,14 +62,6 @@ Then(/^Moved players number is (\d+)$/) do |moved_players|
   page.should have_selector '.moved', text: moved_players
 end
 
-When(/^The player goes normal and the dice show$/) do
-  click_on 'Normal'
-end
-
-Then(/^The car move to right player distance$/) do
-  page.find('.player')['style'].should == "padding-left: #{Player.last.distance * 10}px;"
-end
-
 Then(/^The player's choice\((\w+)\) is shown on player view$/) do |choice|
   page.should have_selector '.choice', text: choice
 end
