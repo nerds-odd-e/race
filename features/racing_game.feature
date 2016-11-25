@@ -35,3 +35,10 @@ Feature: Emerson's car racing game
       |  3              | Super  | 3         |  0              | 4              | 0        | 
       |  7              | Super  | 6         |  0              | 8              | 0        | 
 
+  Scenario: View the waiting message
+    Given There is a new game
+    When  The player join the game
+    And   The player goes Normal 
+    Then  Not View the wait message
+    And   The player goes Normal
+    Then  View the wait massage

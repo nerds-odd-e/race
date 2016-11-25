@@ -5,6 +5,11 @@ class PlayersController < ApplicationController
   NORMAL = 'normal'
 
   def select_dice
+    if @player.throw_flag
+      redirect_to player_path(@player, thrown: 'thrown', message: 'please wait')
+      return
+    end
+
     if params[:choice] == NORMAL
       @player.go_random_normal
     else
@@ -19,6 +24,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @thrown = params[:thrown].present?
+    @message = params[:message]
   end
 
   # GET /players/new

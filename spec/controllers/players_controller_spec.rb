@@ -19,6 +19,16 @@ RSpec.describe PlayersController, type: :controller do
       it { is_expected.to redirect_to player_path(player, thrown: 'thrown') }
       it { expect { subject }.to change { player.reload.steps }.to 2 }
     end
+
+    context 'double throw check' do
+      let(:choice) { 'normal' }
+      before { player.update(throw_flag: true) }
+      it 'show message' do
+        is_expected.to redirect_to player_path(
+          player, thrown: 'thrown', message: 'please wait'
+        )
+      end
+    end
   end
 
   describe 'GET #show' do
@@ -36,6 +46,11 @@ RSpec.describe PlayersController, type: :controller do
     it 'after shown second views' do
       get :show, params: { id: player.to_param, thrown: 'thrown' }
       expect(assigns(:thrown)).to be_truthy
+    end
+
+    it '' do
+      get :show, params: { id: player.to_param, message: 'please wait' }
+      expect(assigns(:message)).to eq 'please wait'
     end
   end
 

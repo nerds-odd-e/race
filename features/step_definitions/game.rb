@@ -69,3 +69,15 @@ end
 Then(/^The player's choice\((\w+)\) is shown on player view$/) do |choice|
   page.should have_selector '.choice', text: choice
 end
+
+When(/^The player goes Normal$/) do
+  click_on 'Normal'
+end
+
+Then(/^View the wait massage$/) do
+  page.should have_selector '.message', text: 'please wait'
+end
+
+Then(/^Not View the wait message$/) do
+  page.should have_no_selector '.message', text: 'please wait'
+end
