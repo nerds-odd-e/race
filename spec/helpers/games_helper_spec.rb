@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the GamesHelper. For example:
-#
-# describe GamesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe GamesHelper, type: :helper do
+  describe 'views car image' do
+    it 'return image tag for views car' do
+      player = FactoryGirl::create :player
+      expect(car_image(player)).to match 'car-scar0.png'
+    end
+  end
+
 end

@@ -8,6 +8,7 @@
 
 = button_to 'Next', '/big_screen', :method => :get
 
-- Player.count.times do |i|
-  %p{ class: "player_#{i}" }
-    ■
+- Player.all.each do |player|
+  %p
+    = car_image(player)
+    

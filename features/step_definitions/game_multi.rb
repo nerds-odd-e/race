@@ -4,7 +4,7 @@ When(/^View the big screen$/) do
 end
 
 Then(/^All player's cars are shown in big screen$/) do
-  Player.count.times do |i|
-    page.should have_selector ".player_#{i}", text: '■'
+  Player.all.each do |player|
+    page.should have_selector "img[class='player_#{player.id}']"
   end
 end
