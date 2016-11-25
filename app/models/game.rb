@@ -1,8 +1,7 @@
+# frozen_string_literal: true
 class Game < ApplicationRecord
   def is_move_next?(thrown_players)
-    if total < Player.count
-      return true
-    end
+    return true if total < Player.count
     total == thrown_players
   end
 

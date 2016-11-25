@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 When(/^View the big screen$/) do
   visit '/big_screen'
 end

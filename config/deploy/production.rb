@@ -1,13 +1,12 @@
+# frozen_string_literal: true
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server 'race.odd-e.com', user: 'odde', roles: %w{app db web}
+server 'race.odd-e.com', user: 'odde', roles: %w(app db web)
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-
-
 
 # role-based syntax
 # ==================
@@ -17,11 +16,9 @@ server 'race.odd-e.com', user: 'odde', roles: %w{app db web}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{odde@race.odd-e.com}
-role :web, %w{odde@race.odd-e.com}
-role :db, %w{odde@race.odd-e.com}
-
-
+role :app, %w(odde@race.odd-e.com)
+role :web, %w(odde@race.odd-e.com)
+role :db, %w(odde@race.odd-e.com)
 
 # Configuration
 # =============
@@ -30,8 +27,6 @@ role :db, %w{odde@race.odd-e.com}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
