@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
@@ -18,7 +19,7 @@ RSpec.describe GamesController, type: :controller do
   end
 
   describe '#next' do
-    subject{ post :next }
+    subject { post :next }
     it { is_expected.to redirect_to big_screen_path }
 
     it 'refresh_throw' do
@@ -27,6 +28,5 @@ RSpec.describe GamesController, type: :controller do
       post :next
       expect(Game.last.moved_player_count).to eq 0
     end
-
   end
 end

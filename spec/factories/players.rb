@@ -9,5 +9,4 @@ FactoryGirl.define do
   factory :thrown_player, parent: :player do
     throw_flag true
   end
- 
 end

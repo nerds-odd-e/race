@@ -22,7 +22,8 @@ RSpec.describe Player, type: :model do
       [2, :go_normal, 1, 1],
       [2, :go_normal, 3, 0]
     ].each do |number, method, existing_damage, expected_steps|
-      context "when the player #{method} with #{number} and #{existing_damage} damages" do
+      context "when the player #{method} with
+               #{number} and #{existing_damage} damages" do
         before do
           subject.damage = existing_damage
           subject.send(method, number)
@@ -43,7 +44,11 @@ RSpec.describe Player, type: :model do
           subject.distance = current_distance
           subject.damage = damage
         end
-        it { expect { subject.send(method, dice) }.to change { subject.distance }.to(result_distance) }
+        it do
+          expect { subject.send(method, dice) }.to change {
+                                                     subject.distance
+                                                   }.to(result_distance)
+        end
       end
     end
   end
