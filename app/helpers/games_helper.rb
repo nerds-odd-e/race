@@ -3,4 +3,19 @@ module GamesHelper
   def car_image(player)
     image_tag 'car-scar0.png', class: "player_#{player.id}"
   end
+
+  class PlayerDecorator
+    delegate :id, :damage, :current_dice_number, :steps, :choice, :distance,
+             to: :object
+    attr_accessor :object
+
+    def initialize(player, context)
+      @object = player
+      @context = context
+    end
+
+    def car_image
+      @context.image_tag 'car-scar0.png', class: "player_#{id}"
+    end
+  end
 end

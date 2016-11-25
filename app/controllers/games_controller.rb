@@ -2,6 +2,9 @@
 class GamesController < ApplicationController
   def big_screen
     @game = Game.start
+    @players = Player.all.collect do |p|
+      ::GamesHelper::PlayerDecorator.new(p, view_context)
+    end
   end
 
   def next
