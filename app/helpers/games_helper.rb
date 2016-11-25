@@ -15,7 +15,8 @@ module GamesHelper
     end
 
     def car_image
-      @context.image_tag 'car-scar0.png', class: "player_#{id}"
+      style = "padding-left: #{distance * 10}px;"
+      @context.image_tag 'car-scar0.png', class: "player_#{id}", style: style
     end
   end
 end

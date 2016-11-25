@@ -10,16 +10,25 @@ Then(/^All player's cars are shown in big screen$/) do
   end
 end
 
-Given(/^There are 2 players in the game$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^There are (\d+) players in the game$/) do |players|
+  players.to_i.times do
+    visit new_player_url
+    click_on '参加'
+  end
 end
 
 When(/^the first player throws the dice$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit "/players/#{Player.first.id}"
+  click_on 'Normal'
 end
 
 Then(/^the first car is moved$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit '/big_screen'
+  player = Player.first
+  id = player.id
+  distance = player.distance
+  style = "padding-left: #{distance * 10}px;"
+  page.find(".player_#{id}")['style'].should == style
 end
 
 Then(/^the second car is not moved$/) do
