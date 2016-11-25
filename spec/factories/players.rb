@@ -5,4 +5,9 @@ FactoryGirl.define do
     damage 0
     throw_flag false
   end
+
+  factory :thrown_player, parent: :player do
+    throw_flag true
+  end
+ 
 end

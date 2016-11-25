@@ -6,7 +6,7 @@
   %span.moved
     = @game.moved_player_count
 
-= button_to 'Next', '/big_screen', :method => :get
+= button_to 'Next', '/next', :method => :post
 
 - Player.count.times do |i|
   %p{ class: "player_#{i}" }

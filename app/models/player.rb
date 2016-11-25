@@ -3,6 +3,7 @@ class Player < ApplicationRecord
   validates :distance, presence: true
 
   scope :thrown, -> { where(throw_flag: true) }
+  scope :refresh_thrown, -> { update_all(throw_flag: false) }
 
   def go_super(number)
     go(number, number)

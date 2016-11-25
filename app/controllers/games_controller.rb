@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   end
 
   def next
-    redirect_to 'big_screen'
+    Player.refresh_thrown
+    redirect_to big_screen_path
   end
 end

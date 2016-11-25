@@ -8,7 +8,7 @@ Feature: multi player game
     And   new <new players> players
     Then  Moved players number is <moved players>
     When  Admin press next button
-#    Then  Moved players number is 0
+    Then  Moved players number is 0
 
     Examples: go normal
       | join players | thrown players | new players | moved players |
