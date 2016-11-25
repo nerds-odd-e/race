@@ -1,7 +1,10 @@
 %h1 Big screen
 
 %p
-  total 200
+  total:
+  %span.total
+    = @game.total_player_count
+
   moved:
   %span.moved
     = @game.moved_player_count

@@ -54,13 +54,16 @@ Given(/^new (\d+) players$/) do |new_players|
 end
 
 When(/^Admin press next button$/) do
-  visit '/big_screen'
+  visit big_screen_path
   click_on 'Next'
 end
 
 Then(/^Moved players number is (\d+)$/) do |moved_players|
-  visit '/big_screen'
   page.should have_selector '.moved', text: moved_players
+end
+
+Then(/^Total players number is (\d+)$/) do |join_players|
+  page.should have_selector '.total', text: join_players
 end
 
 Then(/^The player's choice\((\w+)\) is shown on player view$/) do |choice|
