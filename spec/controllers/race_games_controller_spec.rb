@@ -85,4 +85,16 @@ RSpec.describe RaceGamesController, type: :controller do
       it { is_expected.to redirect_to race_game }
     end
   end
+
+  describe 'previous tick' do
+    let(:race_game) { FactoryGirl.create :race_game }
+    subject { get :previous_tick, params: { id: race_game.to_param } }
+    context 'with valid params' do
+      it 'updates the requested race_game' do
+      subject
+      expect(assigns(:showing_tick)).to eq(0)
+      end
+
+    end
+  end
 end

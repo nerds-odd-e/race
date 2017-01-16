@@ -91,3 +91,24 @@ Then(/^his car should go (\d+) with (\d+) on it$/) do |steps, scars|
     expect(page).to have_selector(".scars.scar#{scars}")
   end
 end
+
+
+Given(/^1 car already went 1 tick with (\d+) steps$/) do | steps|
+	step 'a player is in the game (he)'
+	step 'the organizer starts a new tick'
+	player_makes_a_move(@player1, 'normal', steps)
+end
+
+When(/^the organizer choose to go to the previous tick$/) do
+  visit race_game_url RaceGame.last
+  click_button 'Previous Tick'
+end
+
+Then(/^the tick shown is (\d+)$/) do |tick|
+  visit race_game_url RaceGame.last
+  expect(page).to have_selector('#tick', text: tick)
+end
+
+Then(/^the car is at (\d+) step$/) do |steps|
+	step "his car should go #{steps} with 0 on it"
+end

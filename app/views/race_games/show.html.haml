@@ -21,6 +21,7 @@
 
 -unless @inner_only
   .controls
+    =button_to RaceGame.human_attribute_name(:previous_tick), previous_tick_race_game_path(@race_game), method: :get
     =button_to RaceGame.human_attribute_name(:start_next_tick), choose_first_race_game_path(@race_game)
   .qr-code
     =image_tag(qr_code_race_game_path(@race_game, format: 'svg'))

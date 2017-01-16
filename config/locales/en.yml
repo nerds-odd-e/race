@@ -33,6 +33,7 @@ en:
         tick: 'Tick'
         moved: 'Player moved in current tick'
         start_next_tick: 'Start Next Tick'
+        previous_tick: 'Previous Tick'
       race_player:
         join: 'Join'
         current_distance: 'Current Distance'

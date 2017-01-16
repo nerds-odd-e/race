@@ -1,5 +1,5 @@
 class RaceGamesController < ApplicationController # :nodoc:
-  before_action :set_race_game, only: [:show, :choose_first, :qr_code]
+  before_action :set_race_game, only: [:show, :choose_first, :qr_code, :previous_tick]
 
   # GET /race_games
   # GET /race_games.json
@@ -12,6 +12,12 @@ class RaceGamesController < ApplicationController # :nodoc:
   def show
     @inner_only = params[:inner_only]
     render layout: nil if @inner_only
+  end
+
+  def previous_tick
+    @showing_tick = 0
+
+    render "show"
   end
 
   # GET /race_games/new
