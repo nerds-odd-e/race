@@ -7,7 +7,7 @@ RSpec.describe RaceMove, type: :model do
   context 'before the game start ticking' do
     before { subject.valid? }
     it { is_expected.to be_invalid }
-    its('errors.messages') do
+    its('errors.messages.to_h') do
       is_expected.to include tick: ['has not started yet']
     end
   end
@@ -20,7 +20,7 @@ RSpec.describe RaceMove, type: :model do
       before { race_player.race_moves.create choice: 'normal' }
       before { subject.valid? }
       it { is_expected.to be_invalid }
-      its('errors.messages') { is_expected.to include(tick: ['already moved']) }
+      its('errors.messages.to_h') { is_expected.to include(tick: ['already moved']) }
     end
   end
 

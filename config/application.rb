@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+require 'logger' # must load before 'rails' for ActiveSupport::LoggerThreadSafeLevel
 require 'rails'
 # Pick the frameworks you want:
 require 'active_model/railtie'
@@ -19,7 +20,7 @@ Bundler.require(*Rails.groups)
 module Race
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
