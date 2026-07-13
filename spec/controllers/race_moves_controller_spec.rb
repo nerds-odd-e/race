@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe RaceMovesController, type: :controller do
-  let(:race_game) { FactoryGirl.create :race_game, tick: 1 }
-  let(:race_player) { FactoryGirl.create :race_player, race_game: race_game }
+  let(:race_game) { FactoryBot.create :race_game, tick: 1 }
+  let(:race_player) { FactoryBot.create :race_player, race_game: race_game }
   let(:valid_attributes) { { choice: 'normal' } }
 
   describe 'POST #create' do

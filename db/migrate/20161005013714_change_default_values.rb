@@ -1,4 +1,4 @@
-class ChangeDefaultValues < ActiveRecord::Migration[5.0]
+class ChangeDefaultValues < ActiveRecord::Migration[6.0]
   def change
     change_column :race_games, :distance, :integer, default: 20, null: false
     rename_column :race_players, :scares, :scars

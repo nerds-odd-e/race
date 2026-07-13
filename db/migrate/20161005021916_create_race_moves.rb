@@ -1,4 +1,4 @@
-class CreateRaceMoves < ActiveRecord::Migration[5.0]
+class CreateRaceMoves < ActiveRecord::Migration[6.0]
   def change
     create_table :race_moves do |t|
       t.references :race_player, foreign_key: true

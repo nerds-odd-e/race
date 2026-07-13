@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RaceGame, type: :model do
-  subject { FactoryGirl.create :race_game, tick: 1 }
+  subject { FactoryBot.create :race_game, tick: 1 }
 
   before do
     (1..4).each do |steps|

@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :race_game do
-    distance 30
+    distance { 30 }
   end
 end

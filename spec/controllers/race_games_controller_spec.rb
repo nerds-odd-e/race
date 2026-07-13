@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RaceGamesController, type: :controller do
-  let(:race_game) { FactoryGirl.create :race_game }
+  let(:race_game) { FactoryBot.create :race_game }
   describe 'GET #index' do
     it 'assigns all race_games as @race_games' do
       race_game
@@ -28,7 +28,7 @@ RSpec.describe RaceGamesController, type: :controller do
     context 'with valid params' do
       subject do
         post :create, params: {
-          race_game: FactoryGirl.attributes_for(:race_game)
+          race_game: FactoryBot.attributes_for(:race_game)
         }
       end
 
@@ -75,7 +75,7 @@ RSpec.describe RaceGamesController, type: :controller do
   end
 
   describe 'choose first' do
-    let(:race_game) { FactoryGirl.create :race_game }
+    let(:race_game) { FactoryBot.create :race_game }
     subject { post :choose_first, params: { id: race_game.to_param } }
     context 'with valid params' do
       it 'updates the requested race_game' do
@@ -87,7 +87,7 @@ RSpec.describe RaceGamesController, type: :controller do
   end
 
   describe 'previous tick' do
-    let(:race_game) { FactoryGirl.create :race_game }
+    let(:race_game) { FactoryBot.create :race_game }
     subject { get :previous_tick, params: { id: race_game.to_param } }
     context 'with valid params' do
       it 'updates the requested race_game' do

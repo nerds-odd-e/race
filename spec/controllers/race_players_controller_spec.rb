@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe RacePlayersController, type: :controller do
-  let(:race_game) { FactoryGirl.create :race_game }
+  let(:race_game) { FactoryBot.create :race_game }
 
   describe 'GET #show' do
     it 'assigns the requested race_player as @race_player' do
-      race_player = FactoryGirl.create :race_player
+      race_player = FactoryBot.create :race_player
       get :show, params: { id: race_player.to_param }
       expect(assigns(:race_player)).to eq(race_player)
     end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RaceMove, type: :model do
-  let(:race_player) { FactoryGirl.create :race_player }
+  let(:race_player) { FactoryBot.create :race_player }
   subject { race_player.race_moves.create choice: 'normal' }
 
   context 'before the game start ticking' do
