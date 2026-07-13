@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:3.2
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -8,12 +8,12 @@ RUN apt-get update \
        nodejs \
     && rm -rf /var/lib/apt/lists/*
 
-RUN gem install bundler -v 1.13.2
+RUN gem install bundler -v 2.4.22
 
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle _1.13.2_ install
+RUN bundle _2.4.22_ install
 
 COPY . .
 
