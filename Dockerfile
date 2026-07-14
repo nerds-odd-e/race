@@ -26,10 +26,10 @@ COPY .ruby-version ./
 RUN rbenv install "$(cat .ruby-version)" \
     && rbenv global "$(cat .ruby-version)"
 
-RUN gem install bundler -v 2.4.22
+RUN gem install bundler
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle _2.4.22_ install
+RUN bundle install
 
 COPY . .
 
