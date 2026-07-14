@@ -4,7 +4,6 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        build-essential \
        libsqlite3-dev \
-       default-libmysqlclient-dev \
        nodejs \
        git \
        ca-certificates \
@@ -13,8 +12,6 @@ RUN apt-get update \
        libreadline-dev \
        libyaml-dev \
        libffi-dev \
-       libgdbm-dev \
-       libncurses-dev \
        zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 

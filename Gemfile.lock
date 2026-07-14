@@ -239,8 +239,6 @@ GEM
       prism (~> 1.5)
     multi_test (1.1.0)
     mutex_m (0.3.0)
-    mysql2 (0.5.7)
-      bigdecimal
     nenv (0.3.0)
     net-imap (0.6.4.1)
       date
@@ -458,7 +456,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.5)
-  mysql2
   puma (~> 6.0)
   rails (~> 7.1.0)
   rails-controller-testing

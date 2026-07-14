@@ -21,12 +21,8 @@ test: &test
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: race
-  pool: 25
-  username: odde
-  socket: /var/run/mysqld/mysqld.sock
+  <<: *default
+  database: db/production.sqlite3
 
 cucumber:
   <<: *test
