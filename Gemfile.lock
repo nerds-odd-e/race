@@ -278,7 +278,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (5.0.0)
-    puma (4.3.12)
+    puma (6.6.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.6)
@@ -464,7 +464,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.5)
   mysql2
-  puma (~> 4.3)
+  puma (~> 6.0)
   rails (~> 7.1.0)
   rails-controller-testing
   rails-i18n
