@@ -1,6 +1,5 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
-set :rbenv_ruby, '4.0.5'
 
 set :application, 'race'
 set :repo_url, 'https://github.com/nerds-odd-e/race.git'
