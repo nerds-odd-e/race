@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.0'
+gem 'rails', '~> 7.2', '>= 7.2.3.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 6.0'
+gem 'puma', '~> 7.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,6 +45,9 @@ group :development do
   gem 'listen', '~> 3.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Ruby no longer bundles this by default; spring-watcher-listen requires it
+  # without declaring it as a dependency.
+  gem 'mutex_m'
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
