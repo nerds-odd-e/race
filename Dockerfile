@@ -4,6 +4,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        build-essential \
        libsqlite3-dev \
+       pkg-config \
+       nodejs \
+       tzdata \
        git \
        ca-certificates \
        curl \
