@@ -41,6 +41,7 @@ RUN bundle install
 
 COPY . .
 
+<<<<<<< HEAD
 # Precompile assets. SECRET_KEY_BASE_DUMMY lets Rails boot for asset
 # compilation without the real master key, which is provided at runtime.
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake assets:precompile
@@ -56,6 +57,10 @@ RUN useradd --create-home --shell /bin/bash app \
     && mkdir -p db log tmp \
     && chown -R app:app /app
 USER app
+=======
+ENV RAILS_ENV=production
+ENV RACK_ENV=production
+>>>>>>> 00badb5 (set environment to production)
 
 EXPOSE 3000
 
