@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+
+  # Reveals the app's health via HTTP GET /up; returns 200 if the app boots
+  # with no exceptions, otherwise 500. Useful for load balancer/uptime checks.
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
   root 'race_games#index'
   resources :race_games do
     member do

@@ -16,7 +16,7 @@ class RaceGamesController < ApplicationController # :nodoc:
 
   def previous_tick
     @race_game.previous_tick!
-    redirect_to @race_game
+    redirect_to race_game_path(@race_game)
   end
 
   # GET /race_games/new
@@ -30,7 +30,7 @@ class RaceGamesController < ApplicationController # :nodoc:
     respond_to do |format|
       if @race_game.save
         format.html do
-          redirect_to @race_game, notice: 'Race game was successfully created.'
+          redirect_to race_game_path(@race_game), notice: 'Race game was successfully created.'
         end
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RaceGamesController < ApplicationController # :nodoc:
     @race_game.next_tick!
     respond_to do |format|
       @race_game.save
-      format.html { redirect_to @race_game, notice: 'Next tick starts!' }
+      format.html { redirect_to race_game_path(@race_game), notice: 'Next tick starts!' }
       format.json { render :show, status: :ok, location: @race_game }
     end
   end

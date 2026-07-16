@@ -29,6 +29,9 @@ gem 'haml-rails', '~> 2.0'
 gem 'rqrcode'
 gem 'rubocop', require: false
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'

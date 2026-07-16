@@ -1,5 +1,5 @@
 class RacePlayersController < ApplicationController # :nodoc:
-  before_action :set_race_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_race_player, only: [:show]
   before_action :set_race_game, only: [:new, :create]
 
   # GET /race_players/1
@@ -9,7 +9,7 @@ class RacePlayersController < ApplicationController # :nodoc:
 
   def create
     @race_player = RacePlayer.create race_game: @race_game
-    redirect_to @race_player
+    redirect_to race_player_path(@race_player)
   end
 
   def new

@@ -1,5 +1,5 @@
 class RaceMovesController < ApplicationController # :nodoc:
-  before_action :set_race_move, only: [:show, :edit, :update, :destroy]
+  before_action :set_race_move, only: [:show, :edit]
   before_action :set_race_player, only: [:create]
 
   # GET /race_moves
@@ -33,7 +33,7 @@ class RaceMovesController < ApplicationController # :nodoc:
       else
         flash[:alert] = @race_move.errors.full_messages.join(', ')
       end
-      format.html { redirect_to @race_player }
+      format.html { redirect_to race_player_path(@race_player) }
     end
   end
 
