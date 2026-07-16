@@ -8,8 +8,9 @@ gem 'sqlite3'
 gem 'puma', '~> 7.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# Use Terser as compressor for JavaScript assets (ES6+ aware; uglifier only
+# understands ES5 and chokes on the ES6 JS shipped by actioncable 7.2).
+gem 'terser', '>= 1.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'rails-i18n'
