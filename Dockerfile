@@ -36,6 +36,9 @@ RUN bundle install
 
 COPY . .
 
+ENV RAILS_ENV=production
+ENV RACK_ENV=production
+
 EXPOSE 3000
 
 CMD ["sh", "-c", "bundle exec rake db:setup db:migrate; bundle exec puma -C config/puma.rb"]
