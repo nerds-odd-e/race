@@ -15,9 +15,8 @@ class RaceGamesController < ApplicationController # :nodoc:
   end
 
   def previous_tick
-    @showing_tick = 0
-
-    render "show"
+    @race_game.previous_tick!
+    redirect_to @race_game
   end
 
   # GET /race_games/new

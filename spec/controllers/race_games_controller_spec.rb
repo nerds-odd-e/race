@@ -89,12 +89,16 @@ RSpec.describe RaceGamesController, type: :controller do
   describe 'previous tick' do
     let(:race_game) { FactoryBot.create :race_game }
     subject { get :previous_tick, params: { id: race_game.to_param } }
+    before do
+      race_game.next_tick!
+      race_game.save!
+    end
     context 'with valid params' do
-      it 'updates the requested race_game' do
-      subject
-      expect(assigns(:showing_tick)).to eq(0)
+      it 'decrements the tick' do
+        expect { subject }.to change { race_game.reload.tick }.by(-1)
       end
 
+      it { is_expected.to redirect_to race_game }
     end
   end
 end
