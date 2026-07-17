@@ -91,7 +91,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-<<<<<<< HEAD
 
   # Generate absolute URLs (mailers, QR codes) against the canonical host.
   config.action_controller.default_url_options = { host: "race.odd-e.com", protocol: "https" }
@@ -103,8 +102,4 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-=======
-  config.hosts << 'race.odd-e.com'
-  config.action_controller.default_url_options = { host: 'race.odd-e.com', protocol: 'https' }
->>>>>>> 6d4553d (fix host blocking)
 end
