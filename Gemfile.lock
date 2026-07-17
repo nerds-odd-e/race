@@ -258,6 +258,7 @@ GEM
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     phantomjs (2.1.1.0)
     pp (0.6.4)
       prettyprint
@@ -454,6 +455,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.5)
   mutex_m
+  pg (~> 1.5)
   puma (~> 7.2)
   rails (~> 7.2, >= 7.2.3.1)
   rails-controller-testing

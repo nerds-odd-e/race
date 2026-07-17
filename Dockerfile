@@ -4,6 +4,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        build-essential \
        libsqlite3-dev \
+       libpq-dev \
        pkg-config \
        nodejs \
        tzdata \

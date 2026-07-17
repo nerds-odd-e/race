@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.2', '>= 7.2.3.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use sqlite3 as the database for Active Record in development and test
+gem 'sqlite3', groups: [:development, :test]
+# Use PostgreSQL in production (e.g. CloudNativePG)
+gem 'pg', '~> 1.5', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 7.2'
 # Use SCSS for stylesheets
